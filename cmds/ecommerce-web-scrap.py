@@ -28,7 +28,11 @@ if response.status_code == 200:
     # Iterate through each product block and extract information
     for product_block in product_blocks:
         # Extract product image URL
-        product_image_url = product_block.find('img', class_='rimage__image')['data-lazy-src']
+        product_image_url = product_block.find('img', class_='rimage__image')['data-lazy-src'].replace('{width}', '220')
+        # Check if the URL starts with '//'
+        if product_image_url.startswith('//'):
+            product_image_url = 'https:' + product_image_url
+        product_image_urls.append(product_image_url)
 
         # Extract product name
         product_name = product_block.find('a', class_='title').text.strip()
@@ -76,7 +80,10 @@ if response.status_code == 200:
     # Iterate through each product block and extract information
     for product_block in product_blocks:
         # Extract product image URL
-        product_image_url = product_block.find('img', class_='rimage__image')['data-lazy-src']
+        product_image_url = product_block.find('img', class_='rimage__image')['data-lazy-src'].replace('{width}', '220')
+             # Check if the URL starts with '//'
+        if product_image_url.startswith('//'):
+            product_image_url = 'https:' + product_image_url
         product_image_urls.append(product_image_url)
 
         # Extract product name
@@ -146,7 +153,10 @@ while True:
         # Iterate through each product block and extract information
         for product_block in product_blocks:
             # Extract product image URL
-            product_image_url = product_block.find('img', class_='rimage__image')['data-lazy-src']
+            product_image_url = product_block.find('img', class_='rimage__image')['data-lazy-src'].replace('{width}', '220')
+            # Check if the URL starts with '//'
+            if product_image_url.startswith('//'):
+                product_image_url = 'https:' + product_image_url
             product_image_urls.append(product_image_url)
 
             # Extract product name
@@ -175,3 +185,61 @@ df = pd.DataFrame(data)
 df.to_excel('supermart_products.xlsx', index=False)
 
 print("Data exported to supermart_products.xlsx")
+
+
+
+
+
+
+
+
+
+# Read the Excel file to get the product names and image URLs.
+# Download each image using its URL.
+# Save the image with the product name as the filename.
+
+
+import requests
+import pandas as pd
+import os
+
+# Load the data from the Excel file
+df = pd.read_excel('supermart_products.xlsx')
+
+# Ensure the directory for saving images exists
+os.makedirs('product_images', exist_ok=True)
+
+# Function to ensure the URL has the scheme
+def ensure_scheme(url):
+    if not url.startswith(('http://', 'https://')):
+        return 'https://' + url
+    return url
+
+# Iterate over the DataFrame rows
+for index, row in df.iterrows():
+    product_name = row['Product Name']
+    product_image_url = row['Product Image URL']
+
+    # Ensure the URL has the scheme
+    product_image_url = ensure_scheme(product_image_url)
+
+    # Clean the product name to create a valid filename
+    valid_filename = ''.join(c for c in product_name if c.isalnum() or c in (' ', '-', '_')).rstrip()
+
+    # Set the image file path
+    image_path = os.path.join('product_images', f"{valid_filename}.jpg")
+
+    # Download the image and save it
+    try:
+        response = requests.get(product_image_url)
+        if response.status_code == 200:
+            with open(image_path, 'wb') as f:
+                f.write(response.content)
+            print(f"Downloaded {product_name}")
+        else:
+            print(f"Failed to download {product_name} (status code: {response.status_code})")
+    except Exception as e:
+        print(f"Error downloading {product_name}: {e}")
+
+print("Image downloading completed")
+
