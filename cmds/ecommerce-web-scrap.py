@@ -7,6 +7,30 @@
 # pip install autoscraper
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 # JUST DISPLAY ON TERMINAL 
 
 import requests
@@ -48,6 +72,37 @@ if response.status_code == 200:
         print()  # Add a newline for better readability
 else:
     print("Failed to retrieve the page")
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -109,6 +164,42 @@ if response.status_code == 200:
     print("Data exported to supermart_products.xlsx")
 else:
     print("Failed to retrieve the page")
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -195,6 +286,22 @@ print("Data exported to supermart_products.xlsx")
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 # Read the Excel file to get the product names and image URLs.
 # Download each image using its URL.
 # Save the image with the product name as the filename.
@@ -250,7 +357,38 @@ print("Image downloading completed")
 
 
 
-# Here's a simple example of how you can use Pillow to convert images to WebP format:
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#  convert images to WebP format:
 
 from PIL import Image
 import os
@@ -281,3 +419,14 @@ for filename in os.listdir(input_dir):
 
         # Convert the image to WebP format
         convert_to_webp(input_path, output_path)
+
+
+
+
+
+
+
+
+
+
+
