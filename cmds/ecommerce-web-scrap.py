@@ -3,6 +3,7 @@
 # python3 -m venv myenv
 # source myenv/bin/activate
 # pip install autoscraper pandas openpyxl
+# pip install Pillow
 # pip install autoscraper
 
 
@@ -243,3 +244,40 @@ for index, row in df.iterrows():
 
 print("Image downloading completed")
 
+
+
+
+
+
+
+# Here's a simple example of how you can use Pillow to convert images to WebP format:
+
+from PIL import Image
+import os
+
+# Function to convert image to WebP format
+def convert_to_webp(input_path, output_path):
+    try:
+        # Open the image file
+        with Image.open(input_path) as img:
+            # Convert the image to WebP format
+            img.save(output_path, 'WEBP')
+            print(f"Image converted to WebP: {output_path}")
+    except Exception as e:
+        print(f"Failed to convert image to WebP: {e}")
+
+# Path to the directory containing images
+input_dir = 'product_images'
+
+# Path to the directory where WebP images will be saved
+output_dir = 'new'
+
+# Iterate through each image file in the input directory
+for filename in os.listdir(input_dir):
+    if filename.endswith('.jpg') or filename.endswith('.jpeg') or filename.endswith('.png'):
+        # Construct the input and output paths for each image
+        input_path = os.path.join(input_dir, filename)
+        output_path = os.path.join(output_dir, os.path.splitext(filename)[0] + '.webp')
+
+        # Convert the image to WebP format
+        convert_to_webp(input_path, output_path)
