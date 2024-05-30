@@ -2,6 +2,7 @@
 mysqldump -h easelow.c7aws6qwenxf.af-south-1.rds.amazonaws.com -P 3306 -u admin -p easelow > easelow.sql
 
 mysqldump --column-statistics=0 -h easelow.c7aws6qwenxf.af-south-1.rds.amazonaws.com -P 3306 -u admin -p --databases easelow > easelow.sql
+mysqldump --column-statistics=0 -h localhost -P 3306 -u root --databases easelow > easelow.sql
 
 
 # Always check the security-group ti know if inbound rule allowed 3306

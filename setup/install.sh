@@ -2,12 +2,12 @@
 
 DIR="/var/www/html"
 # DIR="/var/www"
-LOCATION="update"
+LOCATION="easelow"
 
 # Update packages and install necessary packages
 sudo apt update
 sudo apt-get install unzip
-sudo apt-get install p7zip
+sudo apt-get install p7zip -y
 
 sudo apt install apache2 -y
 
@@ -50,7 +50,7 @@ cd $DIR/
 # Folder for git work
 
 # sudo git clone git@github.com:Incrisz/hidden.git
-sudo git clone git@github.com:Incrisz/update.git
+sudo git clone https://github.com/Incrisz/easelow.git
 
 cd $LOCATION
 cd app/
@@ -67,8 +67,8 @@ sudo composer update -n
 # use this if it complains of versions 
 composer global require laravel/installer --update-with-all-dependencies
 
-sudo wget https://easelowstore.s3.amazonaws.com/envaf.txt
-sudo mv envaf.txt .env
+# sudo wget https://easelowstore.s3.amazonaws.com/envaf.txt
+sudo touch .env
 cd app/
 sudo mv exceptions/CoreComponentRepository.php $DIR/$LOCATION/vendor/mehedi-iitdu/core-component-repository/src/
 sudo rm -r exceptions
@@ -107,5 +107,3 @@ sudo service apache2 restart
 
 # sudo chmod +x install.sh
 # sudo ./install.sh
-
-

@@ -65,3 +65,8 @@ fdisk -l
 mkfs -t ext4 /dev/sdb
 
 ASW pass : -YJc@QheOn@AqLYuFubKAF9I46xUrDKI
+
+
+# Composer detected issues in your platform: Your Composer dependencies require a PHP version ">= 8.2.0".
+
+composer clear-cache

@@ -11,7 +11,7 @@ If PHP 7.4 is not installed, you can install it using your Linux distribution's 
 
 to switch
 
-#sudo update-alternatives --config php
+sudo update-alternatives --config php
 #sudo systemctl restart apache2    # for Apache
 #sudo systemctl restart nginx     # for Nginx
 
