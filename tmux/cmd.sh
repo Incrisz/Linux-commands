@@ -7,6 +7,17 @@ tmux
 # to de-attach from a session
 ctrl + B then D
 
+#List opened sessions
+tmux ls
+
+#0: 1 windows (created Sun Jun  2 16:55:18 2024)
+
+#re-attach to a session
+tmux attach-session -t 0
+
+#if its only one
+tmux attach-session  or tmux a
+
 # to terminate 
 
 ctrl + B then type
