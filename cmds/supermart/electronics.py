@@ -1,14 +1,3 @@
-# sudo apt update
-# sudo apt install python3-venv
-# python3 -m venv myenv
-# source myenv/bin/activate
-# pip install autoscraper pandas openpyxl
-# pip install Pillow
-# pip install autoscraper
-
-
-
-
 
 
 
@@ -47,24 +36,34 @@ def convert_to_webp(input_path, output_path):
 
 # List of base URLs to scrape
 base_urls = {
-    'breakfast_cereals': 'https://www.supermart.ng/collections/breakfast-cereals?page={}',
-    'noodles': 'https://www.supermart.ng/collections/rice-pasta-noodles?page={}',
-    'swallow': 'https://www.supermart.ng/collections/swallow?page={}',
-    'salt-spices': 'https://www.supermart.ng/collections/salt-spices?page={}',
-    'canned-fish-meat': 'https://www.supermart.ng/collections/canned-fish-meat?page={}',
-    'canned-beans-peas': 'https://www.supermart.ng/collections/canned-beans-peas?page={}',
-    'canned-fruit-vegetables': 'https://www.supermart.ng/collections/canned-fruit-vegetables?page={}',
-    'sugar-sweeteners': 'https://www.supermart.ng/collections/sugar-sweeteners?page={}',
-    'jams-spreads': 'https://www.supermart.ng/collections/jams-spreads?page={}',
-    'beans-seeds-grains': 'https://www.supermart.ng/collections/beans-seeds-grains?page={}',
-    'cake-bake-pancake': 'https://www.supermart.ng/collections/cake-bake-pancake?page={}',
-    'custard-jelly': 'https://www.supermart.ng/collections/custard-jelly?page={}',
-    'coconut-milk': 'https://www.supermart.ng/collections/coconut-milk?page={}',
-    'olives-pickles': 'https://www.supermart.ng/collections/olives-pickles?page={}',
-    'indian-food': 'https://www.supermart.ng/collections/indian-food?page={}',
-    'olives-pickles': 'https://www.supermart.ng/collections/olives-pickles?page={}',
-    # Add more URLs here with unique keys
+    'blenders-food-processors': 'https://www.supermart.ng/collections/blenders-food-processors?page={}',
+    'computers': 'https://www.supermart.ng/collections/computers?page={}',
+    'water-dispensers': 'https://www.supermart.ng/collections/water-dispensers?page={}',
+    'generators': 'https://www.supermart.ng/collections/generators?page={}',
+    'cables-accessories': 'https://www.supermart.ng/collections/cables-accessories?page={}',
+    'juicers-smoothie-makers': 'https://www.supermart.ng/collections/juicers-smoothie-makers?page={}',
+    'kettles': 'https://www.supermart.ng/collections/kettles?page={}',
+    'coffee-makers': 'https://www.supermart.ng/collections/coffee-makers?page={}',
+    'earphones-speakers': 'https://www.supermart.ng/collections/earphones-speakers?page={}',
+    'fryers-rice-cookers': 'https://www.supermart.ng/collections/fryers-rice-cookers?page={}',
+    'cookers-grills': 'https://www.supermart.ng/collections/cookers-grills?page={}',
+    'flash-drives-sd-cards': 'https://www.supermart.ng/collections/flash-drives-sd-cards?page={}',
+    'video-games': 'https://www.supermart.ng/collections/video-games?page={}',
+    'air-conditioners-fans': 'https://www.supermart.ng/collections/air-conditioners-fans?page={}',
+    'printers': 'https://www.supermart.ng/collections/printers?page={}',
+    'tvs-home-theatre': 'https://www.supermart.ng/collections/tvs-home-theatre?page={}',
+    'ups-stabilizers-inverters': 'https://www.supermart.ng/collections/ups-stabilizers-inverters?page={}',
+    'microwave-ovens': 'https://www.supermart.ng/collections/microwave-ovens?page={}',
+    'fridges-freezers': 'https://www.supermart.ng/collections/fridges-freezers?page={}',
+    'washing-machines': 'https://www.supermart.ng/collections/washing-machines?page={}',
+    'toasters': 'https://www.supermart.ng/collections/toasters?page={}'
 }
+
+
+
+
+
+
 
 # Iterate over each base URL
 for category, base_url in base_urls.items():

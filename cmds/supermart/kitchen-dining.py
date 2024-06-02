@@ -1,14 +1,3 @@
-# sudo apt update
-# sudo apt install python3-venv
-# python3 -m venv myenv
-# source myenv/bin/activate
-# pip install autoscraper pandas openpyxl
-# pip install Pillow
-# pip install autoscraper
-
-
-
-
 
 
 
@@ -47,24 +36,25 @@ def convert_to_webp(input_path, output_path):
 
 # List of base URLs to scrape
 base_urls = {
-    'breakfast_cereals': 'https://www.supermart.ng/collections/breakfast-cereals?page={}',
-    'noodles': 'https://www.supermart.ng/collections/rice-pasta-noodles?page={}',
-    'swallow': 'https://www.supermart.ng/collections/swallow?page={}',
-    'salt-spices': 'https://www.supermart.ng/collections/salt-spices?page={}',
-    'canned-fish-meat': 'https://www.supermart.ng/collections/canned-fish-meat?page={}',
-    'canned-beans-peas': 'https://www.supermart.ng/collections/canned-beans-peas?page={}',
-    'canned-fruit-vegetables': 'https://www.supermart.ng/collections/canned-fruit-vegetables?page={}',
-    'sugar-sweeteners': 'https://www.supermart.ng/collections/sugar-sweeteners?page={}',
-    'jams-spreads': 'https://www.supermart.ng/collections/jams-spreads?page={}',
-    'beans-seeds-grains': 'https://www.supermart.ng/collections/beans-seeds-grains?page={}',
-    'cake-bake-pancake': 'https://www.supermart.ng/collections/cake-bake-pancake?page={}',
-    'custard-jelly': 'https://www.supermart.ng/collections/custard-jelly?page={}',
-    'coconut-milk': 'https://www.supermart.ng/collections/coconut-milk?page={}',
-    'olives-pickles': 'https://www.supermart.ng/collections/olives-pickles?page={}',
-    'indian-food': 'https://www.supermart.ng/collections/indian-food?page={}',
-    'olives-pickles': 'https://www.supermart.ng/collections/olives-pickles?page={}',
-    # Add more URLs here with unique keys
+    'foil-cling-film': 'https://www.supermart.ng/collections/foil-cling-film?page={}',
+    'kitchen-towels-serviettes': 'https://www.supermart.ng/collections/kitchen-towels-serviettes?page={}',
+    'disposable-plates-cutlery': 'https://www.supermart.ng/collections/disposable-plates-cutlery?page={}',
+    'take-away-packs': 'https://www.supermart.ng/collections/take-away-packs?page={}',
+    'food-containers': 'https://www.supermart.ng/collections/food-containers?page={}',
+    'freezer-sandwich-bags': 'https://www.supermart.ng/collections/freezer-sandwich-bags?page={}',
+    'nylon-bags-carry-sacks': 'https://www.supermart.ng/collections/nylon-bags-carry-sacks?page={}',
+    'kitchen-utensils': 'https://www.supermart.ng/collections/kitchen-utensils?page={}',
+    'cookware-tableware': 'https://www.supermart.ng/collections/cookware-tableware?page={}',
+    'drinking-glasses': 'https://www.supermart.ng/collections/drinking-glasses?page={}',
+    'oven-roasting-bags': 'https://www.supermart.ng/collections/oven-roasting-bags?page={}',
+    'baking-wax-paper': 'https://www.supermart.ng/collections/baking-wax-paper?page={}'
 }
+
+
+
+
+
+
 
 # Iterate over each base URL
 for category, base_url in base_urls.items():

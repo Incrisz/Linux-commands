@@ -1,14 +1,3 @@
-# sudo apt update
-# sudo apt install python3-venv
-# python3 -m venv myenv
-# source myenv/bin/activate
-# pip install autoscraper pandas openpyxl
-# pip install Pillow
-# pip install autoscraper
-
-
-
-
 
 
 
@@ -47,24 +36,26 @@ def convert_to_webp(input_path, output_path):
 
 # List of base URLs to scrape
 base_urls = {
-    'breakfast_cereals': 'https://www.supermart.ng/collections/breakfast-cereals?page={}',
-    'noodles': 'https://www.supermart.ng/collections/rice-pasta-noodles?page={}',
-    'swallow': 'https://www.supermart.ng/collections/swallow?page={}',
-    'salt-spices': 'https://www.supermart.ng/collections/salt-spices?page={}',
-    'canned-fish-meat': 'https://www.supermart.ng/collections/canned-fish-meat?page={}',
-    'canned-beans-peas': 'https://www.supermart.ng/collections/canned-beans-peas?page={}',
-    'canned-fruit-vegetables': 'https://www.supermart.ng/collections/canned-fruit-vegetables?page={}',
-    'sugar-sweeteners': 'https://www.supermart.ng/collections/sugar-sweeteners?page={}',
-    'jams-spreads': 'https://www.supermart.ng/collections/jams-spreads?page={}',
-    'beans-seeds-grains': 'https://www.supermart.ng/collections/beans-seeds-grains?page={}',
-    'cake-bake-pancake': 'https://www.supermart.ng/collections/cake-bake-pancake?page={}',
-    'custard-jelly': 'https://www.supermart.ng/collections/custard-jelly?page={}',
-    'coconut-milk': 'https://www.supermart.ng/collections/coconut-milk?page={}',
-    'olives-pickles': 'https://www.supermart.ng/collections/olives-pickles?page={}',
-    'indian-food': 'https://www.supermart.ng/collections/indian-food?page={}',
-    'olives-pickles': 'https://www.supermart.ng/collections/olives-pickles?page={}',
-    # Add more URLs here with unique keys
+    'bath-time': 'https://www.supermart.ng/collections/bath-time?page={}',
+    'moisturisers-lotions': 'https://www.supermart.ng/collections/moisturisers-lotions?page={}',
+    'oral-care': 'https://www.supermart.ng/collections/oral-care?page={}',
+    'deodorants-body-sprays': 'https://www.supermart.ng/collections/deodorants-body-sprays?page={}',
+    'facial-care': 'https://www.supermart.ng/collections/facial-care?page={}',
+    'feminine-care': 'https://www.supermart.ng/collections/feminine-care?page={}',
+    'womens-shaving-hair-removal': 'https://www.supermart.ng/collections/womens-shaving-hair-removal?page={}',
+    'mens-shaving': 'https://www.supermart.ng/collections/mens-shaving?page={}',
+    'hair-care-1': 'https://www.supermart.ng/collections/hair-care-1?page={}',
+    'cotton-wool-buds': 'https://www.supermart.ng/collections/cotton-wool-buds?page={}',
+    'powder': 'https://www.supermart.ng/collections/powder?page={}',
+    'perfumes-for-women': 'https://www.supermart.ng/collections/perfumes-for-women?page={}',
+    'colognes-for-men': 'https://www.supermart.ng/collections/colognes-for-men?page={}',
+    'make-up-beauty': 'https://www.supermart.ng/collections/make-up-beauty?page={}',
+    'feet-care': 'https://www.supermart.ng/collections/feet-care?page={}',
+    'hair-clippers-dryers-trimmers': 'https://www.supermart.ng/collections/hair-clippers-dryers-trimmers?page={}'
 }
+
+
+
 
 # Iterate over each base URL
 for category, base_url in base_urls.items():

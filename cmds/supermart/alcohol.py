@@ -1,14 +1,3 @@
-# sudo apt update
-# sudo apt install python3-venv
-# python3 -m venv myenv
-# source myenv/bin/activate
-# pip install autoscraper pandas openpyxl
-# pip install Pillow
-# pip install autoscraper
-
-
-
-
 
 
 
@@ -47,24 +36,23 @@ def convert_to_webp(input_path, output_path):
 
 # List of base URLs to scrape
 base_urls = {
-    'breakfast_cereals': 'https://www.supermart.ng/collections/breakfast-cereals?page={}',
-    'noodles': 'https://www.supermart.ng/collections/rice-pasta-noodles?page={}',
-    'swallow': 'https://www.supermart.ng/collections/swallow?page={}',
-    'salt-spices': 'https://www.supermart.ng/collections/salt-spices?page={}',
-    'canned-fish-meat': 'https://www.supermart.ng/collections/canned-fish-meat?page={}',
-    'canned-beans-peas': 'https://www.supermart.ng/collections/canned-beans-peas?page={}',
-    'canned-fruit-vegetables': 'https://www.supermart.ng/collections/canned-fruit-vegetables?page={}',
-    'sugar-sweeteners': 'https://www.supermart.ng/collections/sugar-sweeteners?page={}',
-    'jams-spreads': 'https://www.supermart.ng/collections/jams-spreads?page={}',
-    'beans-seeds-grains': 'https://www.supermart.ng/collections/beans-seeds-grains?page={}',
-    'cake-bake-pancake': 'https://www.supermart.ng/collections/cake-bake-pancake?page={}',
-    'custard-jelly': 'https://www.supermart.ng/collections/custard-jelly?page={}',
-    'coconut-milk': 'https://www.supermart.ng/collections/coconut-milk?page={}',
-    'olives-pickles': 'https://www.supermart.ng/collections/olives-pickles?page={}',
-    'indian-food': 'https://www.supermart.ng/collections/indian-food?page={}',
-    'olives-pickles': 'https://www.supermart.ng/collections/olives-pickles?page={}',
-    # Add more URLs here with unique keys
+    'beer-stout-cider': 'https://www.supermart.ng/collections/beer-stout-cider?page={}',
+    'bitters-herbal-drinks': 'https://www.supermart.ng/collections/bitters-herbal-drinks?page={}',
+    'red-wine': 'https://www.supermart.ng/collections/red-wine?page={}',
+    'white-wine': 'https://www.supermart.ng/collections/white-wine?page={}',
+    'rose-wine': 'https://www.supermart.ng/collections/rose-wine?page={}',
+    'sparkling-wine': 'https://www.supermart.ng/collections/sparkling-wine?page={}',
+    'champagne': 'https://www.supermart.ng/collections/champagne?page={}',
+    'brandy-cognac-whisky': 'https://www.supermart.ng/collections/brandy-cognac-whisky?page={}',
+    'aperitifs-liqueurs': 'https://www.supermart.ng/collections/aperitifs-liqueurs?page={}',
+    'gin-vodka': 'https://www.supermart.ng/collections/gin-vodka?page={}',
+    'rum': 'https://www.supermart.ng/collections/rum?page={}',
+    'tequila': 'https://www.supermart.ng/collections/tequila?page={}',
+    'alcopops': 'https://www.supermart.ng/collections/alcopops?page={}',
+    'drinks-in-bulk': 'https://www.supermart.ng/collections/drinks-in-bulk?page={}'
 }
+
+
 
 # Iterate over each base URL
 for category, base_url in base_urls.items():
