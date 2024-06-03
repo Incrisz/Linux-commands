@@ -42,8 +42,6 @@ base_urls = {
 }
 
 
-alcohol.py,baby-kids.py,cleaning.py,drinks.py,electronics.py,frozen.py,health-wellness.py,household.py,kitchen-dining.py,office-supplies.py,oil.py,snacks.py,toiletries.py
-
 # Iterate over each base URL
 for category, base_url in base_urls.items():
     # Lists to store the scraped data
