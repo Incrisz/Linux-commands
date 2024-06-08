@@ -59,7 +59,7 @@ Add new tag at the end:
 
 TEST SETTINGS Type: testparm
 
-Restart Samba Service
+# Restart Samba Service
 sudo systemctl enable smbd
 sudo systemctl start smbd
 
