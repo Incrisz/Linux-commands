@@ -66,22 +66,22 @@ import sys
 # List of script files
 script_files = [
     'alcohol.py',
-    'baby-kids.py',
-    'cleaning.py',
-    'drinks.py',
-    'electronics.py',
-    'food-cupboard.py',
-    'fresh-food.py',
-    'frozen.py',
-    'health-wellness.py',
-    'household.py',
-    'kitchen-dining.py',
-    'mile-12-market.py',
-    'naija-food.py',
-    'office-supplies.py',
-    'oil.py',
-    'snacks.py',
-    'toiletries.py'
+    '/var/www/html/open/supermart/baby-kids.py',
+    '/var/www/html/open/supermart/cleaning.py',
+    '/var/www/html/open/supermart/drinks.py',
+    '/var/www/html/open/supermart/electronics.py',
+    '/var/www/html/open/supermart/food-cupboard.py',
+    '/var/www/html/open/supermart/fresh-food.py',
+    '/var/www/html/open/supermart/frozen.py',
+    '/var/www/html/open/supermart/health-wellness.py',
+    '/var/www/html/open/supermart/household.py',
+    '/var/www/html/open/supermart/kitchen-dining.py',
+    '/var/www/html/open/supermart/mile-12-market.py',
+    '/var/www/html/open/supermart/naija-food.py',
+    '/var/www/html/open/supermart/office-supplies.py',
+    '/var/www/html/open/supermart/oil.py',
+    '/var/www/html/open/supermart/snacks.py',
+    '/var/www/html/open/supermart/toiletries.py'
 ]
 
 # Parent directory name
