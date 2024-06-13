@@ -28,7 +28,7 @@ du -sh
 
 
 # Count all files (including hidden files) in a directory and its subdirectories:
-find /path/to/your/directory -type f | wc -l
+find deploy -type f | wc -l
 
 # Count all files in /var/www/html/open/supermart:
 find /var/www/html/open/supermart -type f | wc -l
@@ -47,8 +47,7 @@ echo "Number of files: $(find /var/www/html/open/supermart -type f | wc -l)" && 
 zip -r -s 100m work.zip supermart/
 
 # OR
-tar -cvzf easelow.tar.gz supermart/
-
+tar -cvzf deploy.tar.gz deploy/
 
 # Reassembling and Extracting the Archive:
 unzip work.zip
