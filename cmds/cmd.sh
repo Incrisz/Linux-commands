@@ -22,3 +22,6 @@ mv -i ./* new_folder
 
 #  To move all content in the current folder to another folder, including hidden files, on Linux
 mv -a ./* new_folder
+
+# check filesize
+du -sh
