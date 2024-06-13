@@ -47,7 +47,7 @@ echo "Number of files: $(find /var/www/html/open/supermart -type f | wc -l)" && 
 zip -r -s 100m work.zip supermart/
 
 # OR
-tar -cvzf work.tar.gz supermart/
+tar -cvzf easelow.tar.gz supermart/
 
 
 # Reassembling and Extracting the Archive:
