@@ -25,3 +25,21 @@ mv -a ./* new_folder
 
 # check filesize
 du -sh
+
+
+# Count all files (including hidden files) in a directory and its subdirectories:
+find /path/to/your/directory -type f | wc -l
+
+# Count all files in /var/www/html/open/supermart:
+find /var/www/html/open/supermart -type f | wc -l
+
+# Count all directories in /var/www/html/open/supermart:
+find /var/www/html/open/supermart -type d | wc -l
+
+# Count all files including hidden files in /var/www/html/open/supermart:
+find /var/www/html/open/supermart -type f -print | wc -l
+
+
+
+
+
