@@ -40,6 +40,7 @@ find /var/www/html/open/supermart -type d | wc -l
 find /var/www/html/open/supermart -type f -print | wc -l
 
 
-
+# output number of file and the size
+echo "Number of files: $(find /var/www/html/open/supermart -type f | wc -l)" && echo "Total size: $(du -sh /var/www/html/open/supermart | awk '{print $1}')"
 
 
