@@ -7,7 +7,6 @@
 
 
 
-
 import pandas as pd
 import glob
 import os
@@ -33,8 +32,8 @@ else:
                     print(f"Warning: {excel_file} is empty and will be skipped.")
                     continue
                 
-                # Use the full file name (including extension) as the sheet name
-                sheet_name = os.path.basename(excel_file)
+                # Use the file name without the extension as the sheet name
+                sheet_name = os.path.splitext(os.path.basename(excel_file))[0]
                 # Ensure the sheet name is unique and within Excel's sheet name limit
                 if len(sheet_name) > 31:
                     sheet_name = sheet_name[:27] + '...'
