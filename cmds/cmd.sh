@@ -53,6 +53,17 @@ tar -cvzf deploy.tar.gz deploy/
 unzip work.zip
 
 
+# The ssconvert command from the Gnumeric suite can convert Excel files to CSV, which you can then view with standard Linux commands.
+sudo apt-get install gnumeric
+
+# Convert the Excel file to CSV:
+ssconvert matched_products.xlsx file.csv
+
+# View the CSV file:
+
+cat file.csv
+
+
 
 
 

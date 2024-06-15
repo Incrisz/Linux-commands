@@ -5,6 +5,8 @@
 # pip install autoscraper pandas openpyxl
 # pip install Pillow
 # pip install autoscraper
+# pip install pandas openpyxl
+
 
 
 
