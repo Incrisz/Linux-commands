@@ -10,11 +10,6 @@
 
 
 
-
-
-
-
-
 # JUST DISPLAY ON TERMINAL 
 
 import requests
