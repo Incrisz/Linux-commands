@@ -12,7 +12,7 @@ import glob
 import os
 
 # Define the base directory containing the subdirectories with Excel files
-base_directory_path = '/var/www/html/open/supermart/test'
+base_directory_path = '/var/www/html/open/supermart'
 
 # Use glob to find all Excel files recursively in the base directory
 excel_files = glob.glob(os.path.join(base_directory_path, '**', '*.xlsx'), recursive=True)
