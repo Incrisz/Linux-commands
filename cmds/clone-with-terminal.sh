@@ -11,6 +11,13 @@ wget -r -l1 -H -t1 -nd -N -np -A.jpg,.jpeg,.png,.gif -erobots=off https://www.su
 wget http://13.245.16.251/img/www.supermart.ng/cdn/shop.zip
 
 
+# or use httrack
+sudo apt-get install httrack
+
+# clone 
+httrack https://kaleidoscopic-pie-2341a3.netlify.app/template/ -O /var/www/html/template/ "+*.googleapis.com/*" "+*.gstatic.com/*" -v
+
+
 # Method 2: Using a Scripting Language (Python)
 import requests
 from bs4 import BeautifulSoup
