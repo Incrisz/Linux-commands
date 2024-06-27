@@ -65,12 +65,12 @@ sudo mkdir storage/framework/cache/data
 sudo composer update -n
 
 # use this if it complains of versions 
-composer global require laravel/installer --update-with-all-dependencies
+# composer global require laravel/installer --update-with-all-dependencies
 
 # sudo wget https://easelowstore.s3.amazonaws.com/envaf.txt
 sudo touch .env
 cd app/
-sudo mv exceptions/CoreComponentRepository.php $DIR/$LOCATION/vendor/mehedi-iitdu/core-component-repository/src/
+sudo mv exceptions/CoreComponentRepository.php /var/www/html/mebany-ecomm//vendor/mehedi-iitdu/core-component-repository/src/
 sudo rm -r exceptions
 cd ..
 # sudo wget https://github.com/Incrisz/Linux-commands/blob/main/.env
