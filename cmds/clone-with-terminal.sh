@@ -1,4 +1,4 @@
-wget -r -p -E -k https://pro-theme.com/html/lesh/transaero/01_home.html
+wget -r -p -E -k  https://pro-theme.com/html/lesh/transaero/01_home.html
 
 wget -r -l1 -H -t1 -nd -N -np -A.jpg,.jpeg,.png,.gif -erobots=off https://www.supermart.ng/
 # Replace http://www.example.com with the URL of the website you want to crawl.
@@ -15,7 +15,7 @@ wget http://13.245.16.251/img/www.supermart.ng/cdn/shop.zip
 sudo apt-get install httrack
 
 # clone 
-httrack https://kaleidoscopic-pie-2341a3.netlify.app/template/ -O /var/www/html/template/ "+*.googleapis.com/*" "+*.gstatic.com/*" -v
+httrack https://themejunction.net/html/gerold/demo/ -O /var/www/html/b/ "+*.googleapis.com/*" "+*.gstatic.com/*" -v
 
 
 # Method 2: Using a Scripting Language (Python)
