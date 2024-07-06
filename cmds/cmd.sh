@@ -11,7 +11,7 @@ rm -rf ./*
 zip -r my_documents.zip Documents
 
 # pull when a server doesn't have ssl cert
-wget --no-check-certificate https://13.244.120.171/uploads.zip
+wget --no-check-certificate https://13.244.101.195/school.zip
 
 # To move all content in the current folder to another folder on Linux
 
