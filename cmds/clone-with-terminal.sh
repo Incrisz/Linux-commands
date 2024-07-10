@@ -17,7 +17,7 @@ wget http://13.245.16.251/img/www.supermart.ng/cdn/shop.zip
 sudo apt-get install httrack
 
 # clone 
-httrack https://themejunction.net/html/gerold/demo/ -O /var/www/html/b/ "+*.googleapis.com/*" "+*.gstatic.com/*" -v
+httrack https://www.castlefineart.com/uk -O /var/www/html/b/ "+*.googleapis.com/*" "+*.gstatic.com/*" -v
 
 
 # Method 2: Using a Scripting Language (Python)

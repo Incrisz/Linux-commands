@@ -5,10 +5,11 @@
 # pip install autoscraper pandas openpyxl
 # pip install Pillow
 # pip install autoscraper
+# pip install selenium
 # pip install pandas openpyxl
 # pip install pytesseract Pillow
-# sudo apt-get update
 # sudo apt-get install tesseract-ocr
+
 
 
 
