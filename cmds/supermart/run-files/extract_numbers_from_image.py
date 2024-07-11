@@ -1,9 +1,6 @@
 
 
 # extract numbers from images to text
-
-
-
 import pytesseract
 from PIL import Image
 import re
