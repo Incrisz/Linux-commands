@@ -84,6 +84,7 @@ sudo find . -type d -exec chmod 755 {} \;
 sudo chown -R www-data:www-data .
 sudo chmod -R 755 .
 sudo chmod -R 755 storage
+sudo chmod -R 755 storage/ *
 sudo chmod -R 755 bootstrap/cache
 
 # To test the whole setup

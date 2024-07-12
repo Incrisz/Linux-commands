@@ -1,3 +1,15 @@
+# sudo apt update
+# sudo apt install python3-venv
+# python3 -m venv myenv
+# source myenv/bin/activate
+# pip install autoscraper pandas openpyxl
+# pip install Pillow
+# pip install autoscraper
+# pip install selenium
+# pip install pandas openpyxl
+# pip install pytesseract Pillow
+# sudo apt-get install tesseract-ocr
+
 
 
 # extract numbers from images to text
@@ -29,6 +41,6 @@ def extract_phone_numbers_from_images(directory_path):
     return phone_numbers
 
 # Example usage
-directory_path = '/home/ubuntu'
+directory_path = '/home/ubuntu/f'
 phone_numbers = extract_phone_numbers_from_images(directory_path)
 print(phone_numbers)
