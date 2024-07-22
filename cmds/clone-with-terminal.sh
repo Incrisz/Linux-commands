@@ -1,6 +1,6 @@
 wget -r -p -E -k https://template.gentechtreedesign.com/html/streamlab/red-html/index.html
 
-wget -r -p -E -k  https://www.castlefineart.com/uk
+wget -r -p -E -k  https://pelzari.kwst.net/site/index.html
 
 wget -r -l1 -H -t1 -nd -N -np -A.jpg,.jpeg,.png,.gif -erobots=off https://www.supermart.ng/
 # Replace http://www.example.com with the URL of the website you want to crawl.

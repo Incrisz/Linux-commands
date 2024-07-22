@@ -41,6 +41,7 @@ sudo apt-get install php8.0-bcmath -y
 
 
 
+
 # Install Composer
 curl -sS https://getcomposer.org/installer | sudo php8.0 -- --install-dir=/usr/local/bin --filename=composer
 
@@ -53,7 +54,7 @@ cd $DIR/
 sudo git clone https://github.com/Incrisz/easelow.git
 
 cd $LOCATION
-cd app/
+cd app/https://pelzari.kwst.net/site/index.html
 sudo git clone https://github.com/Incrisz/exceptions.git
 sudo mv exceptions/Exceptions $DIR/$LOCATION/app/
 cd ..

@@ -17,6 +17,10 @@ sudo apt install php8.0 libapache2-mod-php8.0 php8.0-mysql -y
 # Install phpMyAdmin:
 
 sudo apt install phpmyadmin -y
+
+# No
+# No
+# no
 # During the installation, you'll be prompted to select the web server that should be automatically configured for phpMyAdmin. Choose apache2 using the spacebar, and then press Enter to continue.
 
 # In the next prompt, select Yes to configure the database for phpMyAdmin with dbconfig-common.
@@ -37,7 +41,11 @@ Include /etc/phpmyadmin/apache.conf
 sudo service apache2 restart
 # Access phpMyAdmin in a web browser:
 
-mysql> ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY '1ncrease';
+sudo mysql -u root
+
+ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY '1ncrease';
+
+exit;
 
 
 # Open your web browser and enter the following URL:

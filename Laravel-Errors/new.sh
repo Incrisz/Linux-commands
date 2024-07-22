@@ -13,8 +13,14 @@ http://your-server-ip/phpinfo.php
 
 # Disable the current PHP module:
 
+# Due to packaging complexities PHP 8.2.0+ is required (Ubuntu Launchpad bug #2016016 and phpMyAdmin issue #17503).
+
+# Currently installed version is: 8.0.30
+
 sudo a2dismod php8.0
 
+
+sudo apt update && sudo apt install -y php8.3 php8.3-dom php8.3-gd php8.3-intl php8.3-mbstring php8.3-xml php8.3-xsl php8.3-zip php8.3-curl php8.3-pdo-mysql php8.3-bcmath
 
 sudo a2enmod php8.3
 
