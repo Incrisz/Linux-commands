@@ -12,8 +12,14 @@ sudo mysql_secure_installation
 # This script will guide you through securing various aspects of your MySQL installation. You can choose the default recommended options.
 
 # Install PHP and required extensions:
-
+sudo add-apt-repository -y ppa:ondrej/php
 sudo apt install php8.0 libapache2-mod-php8.0 php8.0-mysql -y
+
+
+# OR
+
+sudo apt update && sudo apt install -y php8.3 php8.3-dom php8.3-gd php8.3-intl php8.3-mbstring php8.3-xml php8.3-xsl php8.3-zip php8.3-curl php8.3-pdo-mysql php8.3-bcmath
+
 # Install phpMyAdmin:
 
 sudo apt install phpmyadmin -y
