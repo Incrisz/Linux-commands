@@ -19,8 +19,9 @@ http://your-server-ip/phpinfo.php
 
 sudo a2dismod php8.0
 
-
 sudo apt update && sudo apt install -y php8.3 php8.3-dom php8.3-gd php8.3-intl php8.3-mbstring php8.3-xml php8.3-xsl php8.3-zip php8.3-curl php8.3-pdo-mysql php8.3-bcmath
+
+sudo systemctl restart apache2
 
 sudo a2enmod php8.3
 
@@ -28,6 +29,7 @@ sudo systemctl restart apache2
 
 composer update
 
+composer update --no-scripts
 
 
 

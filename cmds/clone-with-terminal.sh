@@ -1,4 +1,4 @@
-wget -r -p -E -k https://template.gentechtreedesign.com/html/streamlab/red-html/index.html
+wget -r -p -E -k https://yashadmin.dexignzone.com/xhtml/index.html
 
 wget -r -p -E -k  https://pelzari.kwst.net/site/index.html
 
