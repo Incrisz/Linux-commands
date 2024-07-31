@@ -113,3 +113,13 @@ sudo phpenmod mbstring
 sudo systemctl restart apache2
 
 sudo nano /etc/apache2/conf-available/phpmyadmin.conf
+
+
+
+#  Please provide a valid cache path.
+
+#   at vendor/laravel/framework/src/Illuminate/View/Compilers/Compiler.php:36
+
+mkdir -p storage/framework/views
+chown -R www-data:www-data storage
+chmod -R 775 storage

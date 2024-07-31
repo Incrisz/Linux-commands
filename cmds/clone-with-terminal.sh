@@ -1,4 +1,4 @@
-wget -r -p -E -k https://yashadmin.dexignzone.com/xhtml/index.html
+wget -r -p -E -k https://apexa-html-demo.vercel.app/index-2
 
 wget -r -p -E -k  https://pelzari.kwst.net/site/index.html
 
