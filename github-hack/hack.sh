@@ -7,6 +7,9 @@ REPO_PATH="/var/www/html/Ai"
 cd $REPO_PATH || { echo "Repository path not found!"; exit 1; }
 
 # Pull the latest changes from GitHub
+git config --global user.name "incrisz"
+git config --global user.email "incrisz4luv@gmail.com"
+
 git pull origin main
 
 # Define the line to add
