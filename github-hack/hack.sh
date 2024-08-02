@@ -9,21 +9,17 @@ cd $REPO_PATH || { echo "Repository path not found!"; exit 1; }
 # Pull the latest changes from GitHub
 git pull origin main
 
-# Increment the number in index.php
-FILE="index.php"
-if [ -f "$FILE" ]; then
-    # Assuming the file has a line with count = <number>
-    awk '{if($0 ~ /count = /) {$0="count = " ++count} print}' $FILE > tmpfile && mv tmpfile $FILE
-else
-    echo "File $FILE not found!"
-    exit 1
-fi
+# Define the line to add
+LINE_TO_ADD="count = 1"
+
+# Append the line to the file
+echo "$LINE_TO_ADD" >> index.php
 
 # Add changes to git
-git add $FILE
+git add index.php
 
 # Commit changes with a message
-git commit -m "Incremented count in index.php"
+git commit -m "Added $LINE_TO_ADD to index.php"
 
 # Push changes to GitHub
 git push origin main
