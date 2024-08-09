@@ -1,3 +1,14 @@
+# subdomain config(Cpanel WHM) added to the  /etc/apache/conf/httpd.conf
+
+# To test if the config changes is okay before restarting web-server
+apachectl configtest
+
+systemctl reload httpd
+
+
+# loyaltyclub subdomain
+
+
 <VirtualHost *:80>
     ServerName loyaltyclub.peernetics.io
     ServerAlias www.loyaltyclub.peernetics.io
@@ -15,7 +26,11 @@
 
 <VirtualHost loyaltyclub.peernetics.io:443>
     ServerName loyaltyclub.peernetics.io
-    DocumentRoot /home/peernetics/loyaltyclub
+    # DocumentRoot /home/peernetics/loyaltyclub
+
+      ProxyPreserveHost On
+      ProxyPass / http://localhost:3000/
+      ProxyPassReverse / http://localhost:3000/
 
     <IfModule ssl_module>
         SSLEngine on
