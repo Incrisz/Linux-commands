@@ -207,3 +207,104 @@ sudo a2enmod rewrite
 </VirtualHost>
 
 
+
+
+
+
+
+/traefik # cd dynamic/
+/traefik/dynamic # ls
+Caddyfile                subdomain-routing.yml
+/traefik/dynamic # cat subdomain-routing.yml
+http:
+  routers:
+    my-subdomain-router:
+      rule: "Host(`ipala.cyfamod.com`)"
+      entryPoints:
+        - http
+        - https
+      service: my-service
+      tls:
+        certResolver: letsencrypt
+  services:
+    my-service:
+      loadBalancer:
+        servers:
+          - url: "http://es8sw40.15.236.41.228.sslip.io"
+/traefik/dynamic # 
+
+
+
+Caddyfile                subdomain-routing.yml
+/traefik/dynamic # cat subdomain-routing.yml
+http:
+  routers:
+    my-subdomain-router:
+      rule: "Host(`ipala.cyfamod.com`)"
+      entryPoints:
+        - http
+        - https
+      service: my-service
+      tls:
+        certResolver: letsencrypt
+  services:
+    my-service:
+      loadBalancer:
+        servers:
+          - url: "http://es8sw40.15.236.41.228.sslip.io"
+/traefik/dynamic # cd ..
+/traefik # ls
+acme.json           docker-compose.yml  dynamic
+/traefik # cat docker-compose.yml 
+version: '3.8'
+networks:
+  coolify:
+    external: true
+services:
+  traefik:
+    container_name: coolify-proxy
+    image: 'traefik:v2.11'
+    restart: unless-stopped
+    extra_hosts:
+      - 'host.docker.internal:host-gateway'
+    networks:
+      - coolify
+    ports:
+      - '80:80'
+      - '443:443'
+      - '8080:8080'
+    healthcheck:
+      test: 'wget -qO- http://localhost:80/ping || exit 1'
+      interval: 4s
+      timeout: 2s
+      retries: 5
+    volumes:
+      - '/var/run/docker.sock:/var/run/docker.sock:ro'
+      - '/data/coolify/proxy:/traefik'
+    command:
+      - '--ping=true'
+      - '--ping.entrypoint=http'
+      - '--api.dashboard=true'
+      - '--api.insecure=false'
+      - '--entrypoints.http.address=:80'
+      - '--entrypoints.https.address=:443'
+      - '--entrypoints.http.http.encodequerysemicolons=true'
+      - '--entryPoints.http.http2.maxConcurrentStreams=50'
+      - '--entrypoints.https.http.encodequerysemicolons=true'
+      - '--entryPoints.https.http2.maxConcurrentStreams=50'
+      - '--providers.docker.exposedbydefault=false'
+      - '--providers.file.directory=/traefik/dynamic/'
+      - '--providers.file.watch=true'
+      - '--certificatesresolvers.letsencrypt.acme.httpchallenge=true'
+      - '--certificatesresolvers.letsencrypt.acme.storage=/traefik/acme.json'
+      - '--certificatesresolvers.letsencrypt.acme.httpchallenge.entrypoint=http'
+      - '--providers.docker=true'
+      - '--providers.file.directory=/traefik/dynamic/'
+      - '--providers.file.watch=true'
+
+    labels:
+      - traefik.enable=true
+      - traefik.http.routers.traefik.entrypoints=http
+      - traefik.http.routers.traefik.service=api@internal
+      - traefik.http.services.traefik.loadbalancer.server.port=8080
+      - coolify.managed=true/traefik # 
