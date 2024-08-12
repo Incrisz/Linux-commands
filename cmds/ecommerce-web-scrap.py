@@ -9,6 +9,9 @@
 # pip install pandas openpyxl
 # pip install pytesseract Pillow
 # sudo apt-get install tesseract-ocr
+# pip install pytube
+# pip install yt-dlp
+
 
 
 
