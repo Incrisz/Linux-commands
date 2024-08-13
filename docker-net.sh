@@ -246,3 +246,133 @@ root@ip-172-31-12-94:/home/ubuntu# bridge link
     # Include conf-available/serve-cgi-bin.conf
 </VirtualHost>
 
+
+
+
+
+
+
+
+
+
+
+
+
+version: '3.8'
+networks:
+  coolify:
+    external: true
+services:
+  traefik:
+    container_name: coolify-proxy
+    image: 'traefik:v2.11'
+    restart: unless-stopped
+    extra_hosts:
+      - 'host.docker.internal:host-gateway'
+    networks:
+      - coolify
+    ports:
+      - '80:80'
+      - '443:443'
+      - '8080:8080'
+    healthcheck:
+      test: 'wget -qO- http://localhost:80/ping || exit 1'
+      interval: 4s
+      timeout: 2s
+      retries: 5
+    volumes:
+      - '/var/run/docker.sock:/var/run/docker.sock:ro'
+      - '/data/coolify/proxy:/traefik'
+    command:
+      - '--ping=true'
+      - '--ping.entrypoint=http'
+      - '--api.dashboard=true'
+      - '--api.insecure=false'
+      - '--entrypoints.http.address=:80'
+      - '--entrypoints.https.address=:443'
+      - '--entrypoints.http.http.encodequerysemicolons=true'
+      - '--entryPoints.http.http2.maxConcurrentStreams=50'
+      - '--entrypoints.https.http.encodequerysemicolons=true'
+      - '--entryPoints.https.http2.maxConcurrentStreams=50'
+      - '--providers.docker.exposedbydefault=false'
+      - '--certificatesresolvers.letsencrypt.acme.httpchallenge=true'
+      - '--certificatesresolvers.letsencrypt.acme.storage=/traefik/acme.json'
+      - '--certificatesresolvers.letsencrypt.acme.httpchallenge.entrypoint=http'
+      - '--providers.docker=true'
+      - '--providers.file.directory=/traefik/dynamic/'
+      - '--providers.file.watch=true'
+
+    labels:
+      - traefik.enable=true
+      - traefik.http.routers.traefik.entrypoints=http
+      - traefik.http.routers.traefik.service=api@internal
+      - traefik.http.services.traefik.loadbalancer.server.port=8080
+
+      - traefik.http.routers.myapp.rule=Host(`phylab.cyfamod.com`)
+      - traefik.http.routers.myapp.entrypoints=https
+      - traefik.http.routers.myapp.tls.certresolver=letsencrypt
+      - traefik.http.routers.myapp.service=myapp-service
+      - traefik.http.services.myapp-service.loadbalancer.server.port=3000 # Replace with your actual service port
+
+      - coolify.managed=true 
+
+
+
+
+
+
+
+
+
+
+      traefik.enable=true
+      traefik.http.middlewares.gzip.compress=true
+      traefik.http.middlewares.redirect-to-https.redirectscheme.scheme=https
+      traefik.http.routers.http-0-mskowck.entryPoints=http
+      traefik.http.routers.http-0-mskowck.middlewares=redirect-to-https
+      traefik.http.routers.http-0-mskowck.rule=Host(`mskowck.15.236.41.228.sslip.io`) && PathPrefix(`/`)
+      traefik.http.routers.http-0-mskowck.service=http-0-mskowck
+      traefik.http.routers.https-0-mskowck.entryPoints=https
+      traefik.http.routers.https-0-mskowck.middlewares=gzip
+      traefik.http.routers.https-0-mskowck.rule=Host(`mskowck.15.236.41.228.sslip.io`) && PathPrefix(`/`)
+      traefik.http.routers.https-0-mskowck.service=https-0-mskowck
+      traefik.http.routers.https-0-mskowck.tls.certresolver=letsencrypt
+      traefik.http.routers.https-0-mskowck.tls=true
+      traefik.http.services.http-0-mskowck.loadbalancer.server.port=3000
+      traefik.http.services.https-0-mskowck.loadbalancer.server.port=3000
+      caddy_0.encode=zstd gzip
+      caddy_0.handle_path.0_reverse_proxy={{upstreams 3000}}
+      caddy_0.handle_path=/*
+      caddy_0.header=-Server
+      caddy_0.try_files={path} /index.html /index.php
+      caddy_0=https://mskowck.15.236.41.228.sslip.io
+      caddy_ingress_network=coolify
+
+
+
+
+
+
+      labels:
+  traefik.enable=true
+  traefik.http.middlewares.gzip.compress=true
+  traefik.http.middlewares.redirect-to-https.redirectscheme.scheme=https
+  traefik.http.routers.http-myapp.entryPoints=http
+  traefik.http.routers.http-myapp.middlewares=redirect-to-https
+  traefik.http.routers.http-myapp.rule=Host(`phylab.cyfamod.com`) && PathPrefix(`/`)
+  traefik.http.routers.http-myapp.service=http-myapp
+  traefik.http.routers.https-myapp.entryPoints=https
+  traefik.http.routers.https-myapp.middlewares=gzip
+  traefik.http.routers.https-myapp.rule=Host(`phylab.cyfamod.com`) && PathPrefix(`/`)
+  traefik.http.routers.https-myapp.tls.certresolver=letsencrypt
+  traefik.http.routers.https-myapp.tls=true
+  traefik.http.services.http-myapp.loadbalancer.server.port=3000
+  traefik.http.services.https-myapp.loadbalancer.server.port=3000
+  caddy_0.encode=zstd gzip
+  caddy_0.handle_path.0_reverse_proxy={{upstreams 3000}}
+  caddy_0.handle_path=/*
+  caddy_0.header=-Server
+  caddy_0.try_files={path} /index.html /index.php
+  caddy_0=https://phylab.cyfamod.com
+  caddy_ingress_network=coolify
+
