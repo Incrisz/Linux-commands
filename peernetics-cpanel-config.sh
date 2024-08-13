@@ -66,6 +66,6 @@ nano /etc/apache2/conf.d/loyaltyclub.conf
 
 chmod 644 /etc/apache2/conf.d/loyaltyclub.conf
 
-apachectl configtest
+apachectl configtest  or httpd -t
 
 systemctl reload httpd
