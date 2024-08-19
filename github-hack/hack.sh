@@ -1,14 +1,14 @@
 #!/bin/bash
 
 # Define repository path
-REPO_PATH="/var/www/html/Ai"
+REPO_PATH="/var/www/html/web3-project"
 
 # Navigate to repository directory
 cd $REPO_PATH || { echo "Repository path not found!"; exit 1; }
 
 # Pull the latest changes from GitHub
-git config --global user.name "incrisz"
-git config --global user.email "incrisz4luv@gmail.com"
+git config --global user.name "KingDavida"
+git config --global user.email "davidakinyemi0@gmail.com"
 
 git pull origin main
 

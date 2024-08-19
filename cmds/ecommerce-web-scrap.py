@@ -11,6 +11,8 @@
 # sudo apt-get install tesseract-ocr
 # pip install pytube
 # pip install yt-dlp
+# pip3 install awscli
+
 
 
 
