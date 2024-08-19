@@ -21,7 +21,7 @@ sudo apt install php8.0 libapache2-mod-php8.0 php8.0-mysql -y
 
 # Install phpMyAdmin:
 
-sudo apt install phpmyadmin -y
+sudo apt uninstall phpmyadmin -y
 
 # No
 # No
@@ -61,3 +61,30 @@ http://your_server_ip/phpmyadmin
 # Log in with the MySQL root username and password you set during the installation.
 
 # That's it! You should now have MySQL and phpMyAdmin installed and accessible on your Ubuntu server
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
