@@ -72,10 +72,10 @@ sudo update-alternatives --set php /usr/bin/php8.2
 # Example for switching from PHP 7.4 to PHP 8.0 for WEB
 
 # Disable PHP 7.4 module
-sudo a2dismod php7.4
+sudo a2dismod php8.0
 
 # Enable PHP 8.0 module
-sudo a2enmod php8.0
+sudo a2enmod php8.1
 
 # Restart Apache to apply changes
 sudo systemctl restart apache2
