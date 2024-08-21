@@ -1,0 +1,47 @@
+name: Deploy with SSH
+
+on:
+  push:
+    branches:
+      - main # Triggers the workflow on a push to the main branch.
+
+jobs:
+  deployment:
+    runs-on: ubuntu-latest # Specifies to run the job on the latest Ubuntu runner.
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4 # Checks out the repository code.
+
+    - name: Deploy to Server
+      uses: appleboy/ssh-action@master # Executes SSH commands on your server
+      with:
+        host: ${{ secrets.SSH_SERVER }} # Your server IP or hostname, stored as a secret.
+        username: ${{ secrets.SSH_USERNAME }} # SSH username, stored as a secret.
+        password: ${{ secrets.SSH_PASSWORD }} # SSH password, stored as a secret.
+        port: 22 # Optional. Default SSH port 22 is used unless changed.
+        script: |
+          echo "Starting deployment process..."
+          if [ -d "/var/www/html/autofixer/.git" ]; then
+            cd /var/www/html/autofixer # Make sure this is the correct path.
+            git reset --hard HEAD
+            git clean -fdx
+            git fetch origin main
+            git reset --hard origin/main
+            git pull origin main # Pulling the latest changes from the main branch.
+            php artisan migrate
+            composer install
+            chmod -R 777 storage/ *
+          else
+            git clone https://github.com/mis-technologies/Autofixer-solution.git /var/www/html/autofixer # Replace with your repository URL.
+            cd /var/www/html/autofixer
+            php artisan migrate
+            composer install
+          fi
+          # Create www-data user if it doesn't exist
+          if ! id "www-data" &>/dev/null; then
+            sudo useradd -r -s /usr/sbin/nologin www-data
+          fi
+          # Change ownership of the directory
+          sudo chown -R www-data:www-data /var/www/html/autofixer/
+          # Verify the ownership change
+          ls -ld /var/www/html/autofixer/

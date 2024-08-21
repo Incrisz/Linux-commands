@@ -21,7 +21,7 @@ sudo apt install php8.0 libapache2-mod-php8.0 php8.0-mysql -y
 
 # Install phpMyAdmin:
 
-sudo apt uninstall phpmyadmin -y
+sudo apt install phpmyadmin -y
 
 # No
 # No
