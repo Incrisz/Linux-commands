@@ -50,4 +50,5 @@ jobs:
 
 
 
-# Add token at the .git/config file 
+# Add token at the .git/config file  => https://<github-token>/Cyfamod-Technologies/web3-project.git
+# Add /.github at the .gitignore file
