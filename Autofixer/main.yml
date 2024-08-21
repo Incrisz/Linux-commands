@@ -30,8 +30,8 @@ jobs:
             composer update
             chmod -R 777 storage/ *
           else
-            git clone https://github.com/mis-technologies/Autofixer-solution.git /var/www/html/autofixer # Replace with your repository URL.
-            cd /var/www/html/autofixer
+            git clone https://github.com/mis-technologies/Autofixer-solution.git /var/www/html/autofixer/ # Replace with your repository URL.
+            cd /var/www/html/autofixer/
             php artisan migrate
             composer install
           fi
@@ -49,3 +49,63 @@ jobs:
 
 # Add token at the .git/config file  => https://<github-token>/Cyfamod-Technologies/web3-project.git
 # Add /.github at the .gitignore file
+
+
+
+
+
+
+# same code nut with PATH
+
+
+
+
+
+
+
+name: Deploy with SSH
+
+on:
+  push:
+    branches:
+      - main # Triggers the workflow on a push to the main branch.
+
+jobs:
+  deployment:
+    runs-on: ubuntu-latest 
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4 
+
+    - name: Deploy to Server
+      uses: appleboy/ssh-action@master 
+      with:
+        host: ${{ secrets.SSH_SERVER }} 
+        username: ${{ secrets.SSH_USERNAME }} 
+        password: ${{ secrets.SSH_PASSWORD }} 
+        port: 22 
+        script: |
+          AUTOFIXER_PATH=${{ secrets.AUTOFIXER_PATH }}
+          echo "Starting deployment process..."
+          if [ -d "$AUTOFIXER_PATH.git" ]; then
+            cd /var/www/html/autofixer # Make sure this is the correct path.
+            git add .
+            git commit -m "Override"
+            git pull origin main # Pulling the latest changes from the main branch.
+            php artisan migrate
+            composer update
+            chmod -R 777 storage/ *
+          else
+            git clone https://github.com/mis-technologies/Autofixer-solution.git $AUTOFIXER_PATH # Replace with your repository URL.
+            cd $AUTOFIXER_PATH
+            php artisan migrate
+            composer install
+          fi
+          # Create www-data user if it doesn't exist
+          if ! id "www-data" &>/dev/null; then
+            sudo useradd -r -s /usr/sbin/nologin www-data
+          fi
+          # Change ownership of the directory
+          sudo chown -R www-data:www-data $AUTOFIXER_PATH
+          # Verify the ownership change
+          ls -ld $AUTOFIXER_PATH
