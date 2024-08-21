@@ -45,3 +45,9 @@ jobs:
           sudo chown -R www-data:www-data /var/www/html/autofixer/
           # Verify the ownership change
           ls -ld /var/www/html/autofixer/
+
+
+
+
+
+# Add token at the .git/config file 
