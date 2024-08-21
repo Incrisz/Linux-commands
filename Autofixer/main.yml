@@ -23,13 +23,11 @@ jobs:
           echo "Starting deployment process..."
           if [ -d "/var/www/html/autofixer/.git" ]; then
             cd /var/www/html/autofixer # Make sure this is the correct path.
-            git reset --hard HEAD
-            git clean -fdx
-            git fetch origin main
-            git reset --hard origin/main
+            git add .
+            git commit -m "Override"
             git pull origin main # Pulling the latest changes from the main branch.
             php artisan migrate
-            composer install
+            composer update
             chmod -R 777 storage/ *
           else
             git clone https://github.com/mis-technologies/Autofixer-solution.git /var/www/html/autofixer # Replace with your repository URL.
@@ -45,7 +43,6 @@ jobs:
           sudo chown -R www-data:www-data /var/www/html/autofixer/
           # Verify the ownership change
           ls -ld /var/www/html/autofixer/
-
 
 
 
