@@ -60,9 +60,6 @@ jobs:
 
 
 
-
-
-
 name: Deploy with SSH
 
 on:
@@ -88,7 +85,7 @@ jobs:
           AUTOFIXER_PATH=${{ secrets.AUTOFIXER_PATH }}
           echo "Starting deployment process..."
           if [ -d "$AUTOFIXER_PATH.git" ]; then
-            cd /var/www/html/autofixer # Make sure this is the correct path.
+            cd $AUTOFIXER_PATH # Make sure this is the correct path.
             git add .
             git commit -m "Override"
             git pull origin main # Pulling the latest changes from the main branch.
