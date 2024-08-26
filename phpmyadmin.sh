@@ -1,15 +1,46 @@
-# Update the package lists on your server:
+#!/bin/bash
 
+# Update package information
 sudo apt update
-# Install MySQL server:
+sudo apt install expect -y
 
+
+# Install MySQL server
 sudo apt install mysql-server -y
-# During the installation, you'll be prompted to set a password for the MySQL root user. Choose a secure password and remember it.
 
-# Secure the MySQL installation by running the security script:
+# Secure MySQL installation using an expect script
+SECURE_MYSQL=$(expect -c "
+set timeout 10
+spawn sudo mysql_secure_installation
 
-sudo mysql_secure_installation
-# This script will guide you through securing various aspects of your MySQL installation. You can choose the default recommended options.
+# Answer 'Yes' to set up VALIDATE PASSWORD component
+expect \"Press y|Y for Yes, any other key for No:\"
+send \"n\r\"
+
+# Choose 'No' for remove anonymous users
+expect \"Remove anonymous users? (Press y|Y for Yes, any other key for No) :\"
+send \"n\r\"
+
+# Choose 'No' for disallow remote root login
+expect \"Disallow root login remotely? (Press y|Y for Yes, any other key for No) :\"
+send \"n\r\"
+
+# Choose 'No' for remove test database
+expect \"Remove test database and access to it? (Press y|Y for Yes, any other key for No) :\"
+send \"n\r\"
+
+# Choose 'Yes' to reload privilege tables now
+expect \"Reload privilege tables now? (Press y|Y for Yes, any other key for No) :\"
+send \"y\r\"
+
+expect eof
+")
+
+echo "$SECURE_MYSQL"
+
+
+
+
 
 # Install PHP and required extensions:
 sudo add-apt-repository -y ppa:ondrej/php
@@ -19,38 +50,46 @@ sudo apt install php8.0 libapache2-mod-php8.0 php8.0-mysql -y
 # OR
 
 
-# Install phpMyAdmin:
+#!/bin/bash
 
+# Update package list and upgrade system
+sudo apt update -y
+sudo apt upgrade -y
+
+# Set debconf selections for phpMyAdmin
+# Replace 'your_mysql_root_password' with the password you want to assign to the MySQL root user
+MYSQL_ROOT_PASSWORD="1ncrease"
+PHPMYADMIN_PASSWORD="1ncrease" # If you want to set a specific phpMyAdmin application password
+
+echo "Setting up debconf selections for phpMyAdmin..."
+sudo debconf-set-selections <<< "phpmyadmin phpmyadmin/reconfigure-webserver multiselect apache2"
+sudo debconf-set-selections <<< "phpmyadmin phpmyadmin/dbconfig-install boolean true"
+sudo debconf-set-selections <<< "phpmyadmin phpmyadmin/mysql/admin-pass password $MYSQL_ROOT_PASSWORD"
+sudo debconf-set-selections <<< "phpmyadmin phpmyadmin/app-password-confirm password $PHPMYADMIN_PASSWORD"
+sudo debconf-set-selections <<< "phpmyadmin phpmyadmin/mysql/app-pass password $PHPMYADMIN_PASSWORD"
+
+# Install phpMyAdmin
+echo "Installing phpMyAdmin..."
 sudo apt install phpmyadmin -y
 
-# No
-# No
-# no
-# During the installation, you'll be prompted to select the web server that should be automatically configured for phpMyAdmin. Choose apache2 using the spacebar, and then press Enter to continue.
+# Configure Apache to recognize phpMyAdmin
+# echo "Configuring Apache to include phpMyAdmin configuration..."
+# echo "Include /etc/phpmyadmin/apache.conf" | sudo tee -a /etc/apache2/apache2.conf
 
-# In the next prompt, select Yes to configure the database for phpMyAdmin with dbconfig-common.
-
-# Provide the MySQL root user password that you set earlier when prompted.
-
-# Configure Apache to recognize phpMyAdmin:
-
-sudo nano /etc/apache2/apache2.conf
-# Add the following line at the bottom of the file:
-
-
-Include /etc/phpmyadmin/apache.conf
-# Save the file and exit the text editor.
-
-# Restart Apache to apply the changes:
-
+# Restart Apache to apply the changes
+echo "Restarting Apache server..."
 sudo service apache2 restart
-# Access phpMyAdmin in a web browser:
 
-sudo mysql -u root
+# Change MySQL root user authentication method and set the password
+echo "Updating MySQL root user authentication method..."
+sudo mysql -u root <<_EOF_
+ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY '$MYSQL_ROOT_PASSWORD';
+FLUSH PRIVILEGES;
+exit
+_EOF_
 
-ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY '1ncrease';
+echo "phpMyAdmin installation and configuration completed."
 
-exit;
 
 
 # Open your web browser and enter the following URL:
