@@ -1,0 +1,10 @@
+[
+  {
+    "Description": "My Server OVA",
+    "Format": "ova",
+    "UserBucket": {
+      "S3Bucket": "mikrotik101",
+      "S3Key": "MikroTik-RouterOS-6.ova"
+    }
+  }
+]
