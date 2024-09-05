@@ -1,5 +1,8 @@
 #!/bin/bash
 
+
+sudo apt update
+
 # Define the paths to the files
 FILE_TO_REMOVE="/etc/ssh/sshd_config.d/60-cloudimg-settings.conf"
 NEW_FILE="/etc/ssh/sshd_config.d/ssh.conf"
