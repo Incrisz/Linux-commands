@@ -4,7 +4,7 @@
     "Format": "ova",
     "UserBucket": {
       "S3Bucket": "mikrotik101",
-      "S3Key": "MikroTik-RouterOS-6.ova"
+      "S3Key": "kali-linux-amd64.ova"
     }
   }
 ]

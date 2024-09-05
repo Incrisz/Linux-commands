@@ -5,10 +5,12 @@ sudo apt update
 sudo apt install python3 python3-pip
 
 # Download the AWS CLI version 2 installer package using curl and save it with the filename "awscliv2.zip".
-curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
+sudo curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
 
 # Unzip the downloaded installer package.
-unzip awscliv2.zip
+
+sudo apt install unzip -y
+sudo unzip awscliv2.zip
 
 # Run the AWS CLI installation script with superuser privileges.
 sudo ./aws/install
@@ -19,7 +21,7 @@ aws --version
 
 
 
-
+aws configure
 
 
 
@@ -44,6 +46,7 @@ aws iam put-role-policy --role-name vmimport --policy-name vmimport --policy-doc
 aws ec2 import-image --description "My server VM" --disk-containers file:///home/ubuntu/containers.json
 
 
-aws ec2 describe-import-image-tasks --import-task-ids import-ami-0217c8bc6b39b7ef3
+aws ec2 describe-import-image-tasks --import-task-ids import-ami-0f497aa9bc804d145
+
 
 https://www.quora.com/How-can-I-enable-virtualization-in-VMware-Virtual-Machine

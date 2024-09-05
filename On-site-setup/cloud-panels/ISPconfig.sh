@@ -8,7 +8,7 @@ sudo apt upgrade -y
 sudo nano /etc/hosts
 
 # Add the following line to associate your hostname with the loopback address
-# 172.31.88.9 ispconfig.cyfamod.com
+# 172.31.31.177 isp.cyfamod.com isp
 
 # Save and exit the file (Ctrl+O, Enter, Ctrl+X)
 
@@ -16,29 +16,25 @@ sudo nano /etc/hosts
 sudo nano /etc/hostname
 
 # Replace the existing hostname with your desired hostname, e.g., isp-test
-# isp-test
+isp
 
 # Save and exit the file (Ctrl+O, Enter, Ctrl+X)
 
-# Reboot the server to apply the hostname changes
-sudo reboot
-
-# Download and run the ISPConfig installation script with the specified options
-# This command will:
-# - Use Nginx as the web server
-# - Install PHP versions 7.4 and 8.3
-# - Set up FTP with ports 21-22
-# - Set the language to English
-# - Disable disk quotas
-# - Enable unattended upgrades
-# The installation process will run without further prompts.
-wget -O - https://get.ispconfig.org | sh -s -- --use-nginx --use-php=7.4,8.3 --use-ftp-ports=21-22 --lang=en --no-quota --unattended-upgrades -y
+wget -O - https://get.ispconfig.org | sh -s -- --use-ftp-ports=40110-40210 --unattended-upgrades --no-quota
+# wget -O - https://get.ispconfig.org | sh -s -- --use-nginx --use-php=7.4,8.3 --use-ftp-ports=21-22 --lang=en --no-quota --unattended-upgrades -y
 
 # After the successful installation, the ISPConfig admin password and MySQL root password will be displayed.
 # Make sure to securely save these passwords, as they are essential for accessing ISPConfig.
+
+# Finally, we can delete the log file /tmp/ispconfig-ai/var/log/setup-*. because it contains the passwords.
+rm -rf /tmp/ispconfig-ai/var/log/setup-*
 
 # Your server setup is now complete. 
 # You can log in to ISPConfig by navigating to the following URL in your web browser:
 # https://server-IP:8080
 
 # Replace "server-IP" with your actual server's IP address.
+
+
+[INFO] Your ISPConfig admin password is: n2gVTdZJN4SyLww
+[INFO] Your MySQL root password is: d6D3ebNabCJRb4LFNm1v
