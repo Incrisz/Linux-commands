@@ -1,8 +1,24 @@
 #!/bin/bash
 
+sudo apt update
+sudo apt upgrade -y
+
+sudo apt install gfortran -y
+sudo apt-get install build-essential -y
+sudo apt-get install libxml2-dev -y
+sudo apt-get install m4 
+sudo apt-get install curl -y
+sudo apt-get install libcurl4-openssl-dev
+sudo apt-get install zlib1g-dev -y
+sudo apt-get install libhdf5-dev -y
+sudo apt-get install unzip -y
+
+
+
 # Define main file and dependencies URLs
-MAIN_FILE='https://rom-saf.eumetsat.int/ropp/files/ropp-11.3.tar.gz'
-DEPS=('https://rom-saf.eumetsat.int/ropp/files/zlib-1.2.11.tar.gz' 'https://rom-saf.eumetsat.int/ropp/files/hdf5-1.10.6.tar.gz' 'https://github.com/Unidata/netcdf-c/archive/refs/tags/v4.9.2.tar.gz' 'https://rom-saf.eumetsat.int/ropp/files/netcdf-fortran-4.5.2.tar.gz' 'https://rom-saf.eumetsat.int/ropp/files/sofa_f-20190722.tar.gz' 'https://rom-saf.eumetsat.int/ropp/files/eccodes-2.22.0-Source.tar.gz')
+MAIN_FILE='https://drive.autofixersolution.com/index.php/s/XHcoxENprff92sj/download/ropp-11.3.tar.gz'
+
+DEPS=('https://drive.autofixersolution.com/index.php/s/6JYSmqqZ8j4xyYP/download/eccodes-2.22.0-Source.tar.gz' 'https://drive.autofixersolution.com/index.php/s/K99n9B7SKCPmMKM/download/hdf5-1.10.6.tar.gz' 'https://github.com/Unidata/netcdf-c/archive/refs/tags/v4.9.2.tar.gz' 'https://drive.autofixersolution.com/index.php/s/Zt98ZjwCMbgAJxn/download/netcdf-fortran-4.5.2.tar.gz' 'https://drive.autofixersolution.com/index.php/s/42ZRNMbXSAJCebB/download/sofa_f-20190722.tar.gz' 'https://drive.autofixersolution.com/index.php/s/EayPJ3mczHCnEH9/download/zlib-1.2.11.tar.gz')
 
 # Download main file
 wget $MAIN_FILE
@@ -19,5 +35,23 @@ for dep in ${DEPS[@]}; do
     tar xvzf $(basename $dep)
 done
 
+
+
+mkdir ropp_deps 
+mv sofa/ sofa_f-20190722/
+cp -r sofa_f-20190722/ ropp_deps/
+
+sudo ./build_deps gfortran zlib hdf5 netcf netcdff eccodes sofa
+
+
+cd netcdf-c-4.9.2
+./configure --disable-hdf5 
+make
+make check
+sudo make install
+
 # Go back to the original directory
 cd ..
+
+sudo ./build_deps gfortran netcdff eccodes sofa
+
