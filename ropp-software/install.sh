@@ -36,20 +36,22 @@ for dep in ${DEPS[@]}; do
 done
 
 
-
 sudo mkdir ropp_deps 
 sudo mv sofa/ sofa_f-20190722/
 sudo cp -r sofa_f-20190722/ ropp_deps/
 sudo cp -r sofa_f-20190722/20190722/f77/ sofa_f-20190722/
-
 sudo ./build_deps gfortran zlib hdf5 netcf netcdff eccodes sofa
 
 
-sudo cd netcdf-c-4.9.2
-sudo ./configure --disable-hdf5 
-sudo make
-sudo make check
+
+cd netcdf-c-4.9.2
+./configure --disable-hdf5 
+make
+make check
 sudo make install
+
+echo "netcdf-c-4.9.2 installation done"
+
 
 # Go back to the original directory
 cd ..
