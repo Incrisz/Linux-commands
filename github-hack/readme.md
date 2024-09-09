@@ -5,7 +5,7 @@ ssh-keygen -t rsa -b 4096 -C "d9004396@gmail.com"
 
 ssh-keygen -t rsa -b 4096 -C "d9004396@gmail.com" -f ~/.ssh/david
 
-
+## nano .git/config
 git remote set-url origin https://<github-token>@github.com/Eliano-sudo/Us-Web.git
 
 ## Follow the prompts to save the key (e.g., /home/youruser/.ssh/id_rsa).
@@ -47,7 +47,7 @@ crontab -e
 
 ## Add the following line:
 
-*/10 * * * * /var/www/html/david.sh
+*/10 * * * * /var/www/html/cd.sh
 
 ## Replace /path/to/update_index.sh with the actual path where the script is saved.
 

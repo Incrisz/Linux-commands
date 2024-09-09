@@ -34,29 +34,3 @@ https://github.com/Unidata/netcdf-c/archive/refs/tags/v4.9.2.tar.gz
 
 
 # new installation cmds
-export Ropp_ROOT=$HOME
-
-# cp eccodes-2.22.0-Source , hdf5-1.10.6 , netcdf-c-4.7.3 , netcdf-fortran-4.5.2 , sofa_f-20190722 , zlib-1.2.11  to ropp folder
-mkdir ropp_deps 
-cp -r sofa/ ropp_deps/
-sudo ./build_deps gfortran zlib hdf5 netcf netcdff eccodes sofa
-
-
-cd netcdf-c-4.9.2
-./configure
-make
-make check
-sudo make install
-
-
-
-./configure --disable-libxml2 --disable-hdf5
-make
-make check
-sudo make install
-
-
-
-sudo ./build_deps gfortran netcdff eccodes sofa
-
-sudo ./build_ropp gfortran# ropp-software
