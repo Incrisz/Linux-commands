@@ -45,9 +45,9 @@ git remote set-url origin git@github.com:Cyfamod-Technologies/Ai.git
 crontab -e
 
 
-## Add the following line:
+## Add the following line: run every 3 hrs
 
-*/10 * * * * /var/www/html/cd.sh
+0 */3 * * * /var/www/html/cd.sh
 
 ## Replace /path/to/update_index.sh with the actual path where the script is saved.
 

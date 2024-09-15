@@ -13,7 +13,7 @@ tmux ls
 #0: 1 windows (created Sun Jun  2 16:55:18 2024)
 
 #re-attach to a session
-tmux attach-session -t 0
+tmux attach-session -t 1
 
 #if its only one
 tmux attach-session  or tmux a

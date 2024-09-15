@@ -1,6 +1,6 @@
 #!/bin/bash
 
-
+# ssh
 sudo apt update
 
 # Define the paths to the files
