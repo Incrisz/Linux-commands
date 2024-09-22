@@ -112,7 +112,6 @@ except KeyError as e:
 
 # Install necessary libraries
 
-# pip install transformers sklearn pandas
 # pip install pipenv
 # pipenv shell
 # pip install --upgrade pip setuptools wheel
@@ -120,6 +119,7 @@ except KeyError as e:
 # pip install transformers
 # pip install -U scikit-learn
 # pip install pandas openpyxl
+# pip install transformers sklearn pandas
 
 # Python code starts here
 

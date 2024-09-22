@@ -36,5 +36,5 @@ rm -rf /tmp/ispconfig-ai/var/log/setup-*
 # Replace "server-IP" with your actual server's IP address.
 
 
-[INFO] Your ISPConfig admin password is: n2gVTdZJN4SyLww
-[INFO] Your MySQL root password is: d6D3ebNabCJRb4LFNm1v
+[INFO] Your ISPConfig admin password is: 311j7vx7qkJsNoT
+[INFO] Your MySQL root password is: Sho23nzCofsnX2tmhKqx
