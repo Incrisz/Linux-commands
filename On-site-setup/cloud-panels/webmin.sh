@@ -25,5 +25,7 @@ sudo /bin/sh install.sh -y --hostname webmin.cyfamod.com --force --verbose
 
 
 
-# use user : root and password : {root-password} 
+# use user : root and password : {root-password}
+
+# server size 2vcpu and 4g-RAm
 
