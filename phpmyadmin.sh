@@ -82,11 +82,11 @@ sudo service apache2 restart
 
 # Change MySQL root user authentication method and set the password
 echo "Updating MySQL root user authentication method..."
-sudo mysql -u root <<_EOF_
+sudo mysql -u root <<-EOF
 ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY '$MYSQL_ROOT_PASSWORD';
 FLUSH PRIVILEGES;
 exit
-_EOF_
+EOF
 
 echo "phpMyAdmin installation and configuration completed."
 

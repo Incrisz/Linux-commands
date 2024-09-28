@@ -29,3 +29,10 @@ sudo /bin/sh install.sh -y --hostname webmin.cyfamod.com --force --verbose
 
 # server size 2vcpu and 4g-RAm
 
+
+drivewave
+
+HgT9vd5iAUP3pmz
+
+
+(http.request.full_uri contains "172.67.214.135:24567" and ip.src eq 172.67.214.135)
