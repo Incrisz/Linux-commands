@@ -11,7 +11,7 @@ sudo apt-get install certbot
 Obtain an SSL certificate: Once you have Certbot installed, you can use it to obtain an SSL certificate for your domain. The following command will obtain a certificate for your domain using the Apache plugin:
 
 
-#sudo certbot --apache -d easelowmarket.com
+#sudo certbot --apache -d mebany.com
 #sudo certbot --nginx -d easelowmarket.com
 
 

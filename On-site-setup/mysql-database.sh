@@ -36,3 +36,22 @@
               ")
 
               echo "$SECURE_MYSQL"
+
+
+
+
+# mysql -u root
+
+# CREATE DATABASE mebany;
+# CREATE USER 'mebany'@'localhost' IDENTIFIED BY '1ncrease';
+# GRANT ALL PRIVILEGES ON mebany.* TO 'mebany'@'localhost';
+
+# FLUSH PRIVILEGES;
+
+
+
+# exit;
+
+
+
+# mysql -u root -p mebany < mebany.sql

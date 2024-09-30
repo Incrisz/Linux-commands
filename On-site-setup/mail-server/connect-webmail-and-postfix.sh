@@ -27,7 +27,7 @@ $config['db_dsnw'] = 'mysql://roundcube:1ncrease@localhost/roundcubemail';
 # apt update refreshes the package index files from their sources via internet.
 # apt upgrade installs newer versions of the apps present on the system.
 sudo apt update && sudo apt upgrade -y 
-sudo apt install mailutils -y
+sudo yum install mailutils -y
 
 # Install postfix mail server. '-y' flag automatically answers 'yes' to any prompt during installation.
 sudo apt install postfix -y

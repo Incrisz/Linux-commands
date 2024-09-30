@@ -21,7 +21,10 @@ EOT
 
 # Enable the virtual host and rewrite module, then restart Apache
 sudo a2dissite 000-default.conf
-sudo a2ensite hidden.conf
+sudo a2dissite default-ssl.conf
+sudo a2ensite mebany.conf
+sudo a2enmod ssl
+
 # sudo a2ensite hidden-ssl.conf
 sudo a2enmod rewrite
 sudo systemctl restart apache2
@@ -49,4 +52,25 @@ sudo wget https://raw.githubusercontent.com/Incrisz/Linux-commands/main/setup/cr
 sudo chmod +x cron-job.sh 
 # sudo su
 sudo ./cron-job.sh
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
