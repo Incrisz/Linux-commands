@@ -1,7 +1,7 @@
 Install the Certbot tool: Certbot is a popular tool that can automate the process of obtaining and installing SSL certificates from Let's Encrypt. You can install Certbot using the following command:
 
 
-#sudo apt-get install certbot python3-certbot-apache -y
+sudo apt-get install certbot python3-certbot-apache -y
 sudo apt install python3-certbot-nginx
 
 sudo apt-get update
