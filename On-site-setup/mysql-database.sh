@@ -54,4 +54,4 @@
 
 
 
-# mysql -u root -p mebany < mebany.sql
+# mysql -u root -p mebany < coindlqo_mebany.sql

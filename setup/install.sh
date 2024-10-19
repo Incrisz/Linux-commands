@@ -51,12 +51,12 @@ cd $DIR/
 # Folder for git work
 
 # sudo git clone git@github.com:Incrisz/hidden.git
-sudo git clone https://github.com/Incrisz/easelow.git
+# sudo git clone https://github.com/Incrisz/easelow.git
 
 cd $LOCATION
-cd app/https://pelzari.kwst.net/site/index.html
+# cd app/https://pelzari.kwst.net/site/index.html
 sudo git clone https://github.com/Incrisz/exceptions.git
-sudo mv exceptions/Exceptions $DIR/$LOCATION/app/
+sudo mv exceptions/Exceptions /var/www/html/mebany-ecomm/app/
 cd ..
 sudo mkdir storage/framework/cache/data
 
@@ -70,23 +70,23 @@ sudo composer update -n
 
 # sudo wget https://easelowstore.s3.amazonaws.com/envaf.txt
 sudo touch .env
-cd app/
-sudo mv exceptions/CoreComponentRepository.php /var/www/html/mebany-ecomm//vendor/mehedi-iitdu/core-component-repository/src/
+# cd app/
+mv exceptions/CoreComponentRepository.php /var/www/html/mebany-ecomm/vendor/mehedi-iitdu/core-component-repository/src/
 sudo rm -r exceptions
-cd ..
+# cd ..
 # sudo wget https://github.com/Incrisz/Linux-commands/blob/main/.env
 
 # sudo ./env.sh
 # sudo rm env.sh
 
-sudo find . -type f -exec chmod 644 {} \;
-sudo find . -type d -exec chmod 755 {} \;
+find . -type f -exec chmod 644 {} \;
+find . -type d -exec chmod 755 {} \;
 
-sudo chown -R www-data:www-data .
-sudo chmod -R 755 .
-sudo chmod -R 755 storage
-sudo chmod -R 777 storage/ *
-sudo chmod -R 755 bootstrap/cache
+chown -R www-data:www-data .
+chmod -R 755 .
+chmod -R 755 storage
+chmod -R 777 storage/ *
+chmod -R 755 bootstrap/cache
 
 # To test the whole setup
 php artisan key:generate

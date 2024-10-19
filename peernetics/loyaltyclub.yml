@@ -1,0 +1,84 @@
+name: Deploy with SSH-by-Incrisz
+
+on:
+  push:
+    branches:
+      - master   # Triggers the workflow on a push to the master branch (for production).
+      - dev      # Triggers the workflow on a push to the dev branch (for development).
+
+jobs:
+  deployment:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+    
+    - name: Deploy to Server
+      uses: appleboy/ssh-action@master
+      with:
+        host: ${{ secrets.ssh_server }}
+        username: ${{ secrets.ssh_username }}
+        password: ${{ secrets.ssh_password }}
+        port: 22
+        script: |
+          echo "Starting deployment process..."
+          
+          # Check which branch triggered the push and set the directory accordingly
+          if [ "${{ github.ref }}" == "refs/heads/master" ]; then
+            REPO_DIR="/home/peernetics/loyaltyclub" # Path for master branch (production)
+            REPO_URL="https://github.com/Peernetics-Ltd/loyalty-club.git"
+          elif [ "${{ github.ref }}" == "refs/heads/dev" ]; then
+            REPO_DIR="/home/peernetics/loyaltyclubdev" # Path for dev branch (development)
+            REPO_URL="https://github.com/Peernetics-Ltd/loyaltyclub.git"
+          else
+            echo "Branch not recognized for deployment."
+            exit 1
+          fi
+          
+          echo "Deploying branch ${GITHUB_REF} to ${REPO_DIR}..."
+          
+          # Check if the directory already exists
+          if [ -d "${REPO_DIR}/.git" ]; then
+            cd $REPO_DIR
+            git add .
+            git commit -m "loyaltyclub-update"
+            git fetch origin
+            git reset --hard origin/${{ github.ref_name }} # Reset to the latest commit
+            git pull origin ${{ github.ref_name }} # Pull the latest changes
+            npm install  # Install dependencies for production
+            npx prisma generate
+            npm prisma migrate deploy
+            npm run build # Build the app if needed (optional based on your app setup)
+          else
+            git clone $REPO_URL $REPO_DIR
+            cd $REPO_DIR
+            npm install --production
+            npx prisma generate
+            npm prisma migrate deploy
+            npm run build
+          fi
+          
+          # Restart Node.js app (adjust command if you use PM2 or another process manager)
+          pm2 reload all || pm2 start server.js --name "loyaltyclub" # Use your app's entry point (server.js is just an example)
+
+          # Change ownership of the directory
+          sudo chown -R www-data:www-data $REPO_DIR
+          # Verify the ownership change
+          ls -ld $REPO_DIR
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# Add token at the .git/config file  => https://<github-token>@github.com/Cyfamod-Technologies/web3-project.git
+# Add /.github at the .gitignore file
+

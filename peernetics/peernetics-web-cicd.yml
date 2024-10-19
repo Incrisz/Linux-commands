@@ -45,3 +45,19 @@ jobs:
           sudo chown -R www-data:www-data /home/peernetics/public_html/
           # Verify the ownership change
           ls -ld /home/peernetics/public_html/
+
+
+
+
+
+
+
+
+
+
+
+
+
+# Add token at the .git/config file  => https://<github-token>@github.com/Cyfamod-Technologies/web3-project.git
+# Add /.github at the .gitignore file
+
