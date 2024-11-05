@@ -5,7 +5,7 @@
               sudo apt install expect -y
 
               # Install MySQL server
-              sudo apt install mysql-server -y
+                sudo apt install mariadb-server -y
 
               # Secure MySQL installation using an expect script
               SECURE_MYSQL=$(expect -c "

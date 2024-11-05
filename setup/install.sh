@@ -84,9 +84,9 @@ find . -type d -exec chmod 755 {} \;
 
 chown -R www-data:www-data .
 chmod -R 755 .
-chmod -R 755 storage
+chmod -R 777 storage
 chmod -R 777 storage/ *
-chmod -R 755 bootstrap/cache
+chmod -R 777 bootstrap/cache
 
 # To test the whole setup
 php artisan key:generate

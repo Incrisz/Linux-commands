@@ -1,8 +1,8 @@
 #!/bin/bash
 
-DIR="/var/www/html"
-# DIR="/var/www"
-LOCATION="easelow"
+# DIR="/var/www/html"
+# # DIR="/var/www"
+# LOCATION="easelow"
 
 # Update packages and install necessary packages
 sudo apt update

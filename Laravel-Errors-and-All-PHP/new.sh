@@ -23,7 +23,7 @@ sudo apt update && sudo apt install -y php8.3 php8.3-dom php8.3-gd php8.3-intl p
 
 sudo systemctl restart apache2
 
-sudo a2enmod php8.3
+sudo a2enmod php8.2
 
 sudo systemctl restart apache2
 
