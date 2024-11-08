@@ -42,9 +42,9 @@
 
 # mysql -u root
 
-# CREATE DATABASE mebany;
-# CREATE USER 'mebany'@'localhost' IDENTIFIED BY '1ncrease';
-# GRANT ALL PRIVILEGES ON mebany.* TO 'mebany'@'localhost';
+# CREATE DATABASE stuqet;
+# CREATE USER 'stuqet'@'localhost' IDENTIFIED BY '1ncrease';
+# GRANT ALL PRIVILEGES ON stuqet.* TO 'stuqet'@'localhost';
 
 # FLUSH PRIVILEGES;
 
@@ -54,4 +54,4 @@
 
 
 
-# mysql -u root -p mebany < coindlqo_mebany.sql
+# mysql -u root -p stuqet < stuqet.sql

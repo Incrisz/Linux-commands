@@ -70,7 +70,7 @@ sudo apt install -y php7.3 php7.3-dom php7.3-gd php7.3-intl php7.3-mbstring php7
 sudo apt install -y php7.4 php7.4-dom php7.4-gd php7.4-intl php7.4-mbstring php7.4-xml php7.4-xsl php7.4-zip php7.4-curl php7.4-mysql php7.4-bcmath
 
 # Install PHP 8.0
-# sudo apt install -y php8.0 php8.0-dom php8.0-gd php8.0-intl php8.0-mbstring php8.0-xml php8.0-xsl php8.0-zip php8.0-curl php8.0-mysql php8.0-bcmath
+sudo apt install -y php8.0 php8.0-dom php8.0-gd php8.0-intl php8.0-mbstring php8.0-xml php8.0-xsl php8.0-zip php8.0-curl php8.0-mysql php8.0-bcmath
 
 # Install PHP 8.1
 sudo apt install -y php8.1 php8.1-dom php8.1-gd php8.1-intl php8.1-mbstring php8.1-xml php8.1-xsl php8.1-zip php8.1-curl php8.1-mysql php8.1-bcmath

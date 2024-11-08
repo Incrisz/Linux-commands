@@ -29,7 +29,8 @@ nano /etc/apache2/conf.d/loyaltyclub.conf
     ErrorLog /var/log/httpd/loyaltyclub-error.log
     CustomLog /var/log/httpd/loyaltyclub-access.log combined
 </VirtualHost>
-
+# sudo a2enmod rewrite
+# sudo a2enmod ssl
 <VirtualHost loyaltyclub.peernetics.io:443>
     ServerName loyaltyclub.peernetics.io
     ServerAlias www.loyaltyclub.peernetics.io
@@ -64,8 +65,8 @@ nano /etc/apache2/conf.d/loyaltyclub.conf
 
 # after inserting the file
 
-chmod 644 /etc/apache2/conf.d/loyaltyclub.conf
+# chmod 644 /etc/apache2/conf.d/loyaltyclub.conf
 
-apachectl configtest  or httpd -t
+# apachectl configtest  or httpd -t
 
-systemctl reload httpd
+# systemctl reload httpd
