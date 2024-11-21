@@ -18,7 +18,7 @@ nano /etc/apache2/conf.d/loyaltyclub.conf
 <VirtualHost *:80>
     ServerName loyaltyclub.peernetics.io
     ServerAlias www.loyaltyclub.peernetics.io
-    DocumentRoot /home/peernetics/loyaltyclub
+    # DocumentRoot /home/peernetics/loyaltyclub
 
     <Directory /home/peernetics/loyaltyclub>
         Options Indexes FollowSymLinks
@@ -26,24 +26,29 @@ nano /etc/apache2/conf.d/loyaltyclub.conf
         Require all granted
     </Directory>
 
-    ErrorLog /var/log/httpd/loyaltyclub-error.log
-    CustomLog /var/log/httpd/loyaltyclub-access.log combined
+
+    ErrorLog ${APACHE_LOG_DIR}/error.log
+    CustomLog ${APACHE_LOG_DIR}/access.log combined
 </VirtualHost>
-# sudo a2enmod rewrite
+# sudo a2enmod proxy
+# sudo a2enmod proxy_http
 # sudo a2enmod ssl
+
 <VirtualHost loyaltyclub.peernetics.io:443>
     ServerName loyaltyclub.peernetics.io
     ServerAlias www.loyaltyclub.peernetics.io
     # DocumentRoot /home/peernetics/loyaltyclub
 
       ProxyPreserveHost On
-      ProxyPass / http://localhost:3000/
-      ProxyPassReverse / http://localhost:3000/
+      ProxyPass / http://localhost:1213/
+      ProxyPassReverse / http://localhost:1213/
 
     <IfModule ssl_module>
         SSLEngine on
-        SSLCertificateFile /var/cpanel/ssl/apache_tls/peernetics.io/combined
+        SSLCertificateFile      /etc/ssl/certs/ssl-cert-snakeoil.pem
+        SSLCertificateKeyFile /etc/ssl/private/ssl-cert-snakeoil.key
     </IfModule>
+
 
     <Directory /home/peernetics/loyaltyclub>
         Options Indexes FollowSymLinks
@@ -51,8 +56,8 @@ nano /etc/apache2/conf.d/loyaltyclub.conf
         Require all granted
     </Directory>
 
-    ErrorLog /var/log/httpd/loyaltyclub-ssl-error.log
-    CustomLog /var/log/httpd/loyaltyclub-ssl-access.log combined
+    ErrorLog ${APACHE_LOG_DIR}/error.log
+    CustomLog ${APACHE_LOG_DIR}/access.log combined
 </VirtualHost>
 
 
