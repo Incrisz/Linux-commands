@@ -11,7 +11,7 @@ cp .env.template .env
 
 
 # Add this inside the .env file
-DATABASE_URL=postgresql://postgres:password@172.18.0.2:5432/database
+DATABASE_URL=postgresql://postgres:password@172.19.0.2:5432/database
 
 # run this to build the docker images
 docker-compose up -d
