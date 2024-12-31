@@ -1,4 +1,4 @@
-wget -r -p -E -k https://madebydesignesia.com/themes/mindthera/index.html
+wget -r -p -E -k https://uithemez.com/i/geekfolio/light/home-main.html
 
 wget -r -p -E -k  https://pelzari.kwst.net/site/index.html
 

@@ -12,7 +12,7 @@ services:
     environment:
       - NODE_ENV=development
     command: >
-      bash -c "npm install && npx prisma db push && npm run dev"
+      bash -c "npm install && npx prisma db push && PORT=3000 npm run dev"
     depends_on:
       - postgres
 

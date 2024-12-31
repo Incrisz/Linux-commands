@@ -1,3 +1,6 @@
+#install docker fist before setting up your node app
+
+
 git clone https://github.com/Peernetics-Ltd/loyalty-club.git
 
 cd loyalty-club
@@ -9,9 +12,9 @@ npm i
 
 cp .env.template .env 
 
-
+nano .env
 # Add this inside the .env file
-DATABASE_URL=postgresql://postgres:password@172.19.0.2:5432/database
+DATABASE_URL=postgresql://postgres:password@172.17.0.2:5432/database
 
 # run this to build the docker images
 docker-compose up -d
