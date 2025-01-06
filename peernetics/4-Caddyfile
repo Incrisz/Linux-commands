@@ -1,0 +1,3 @@
+loyaltyclub.peernetics.io {
+    reverse_proxy app:3000
+}
