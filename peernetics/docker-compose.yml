@@ -4,6 +4,7 @@ services:
   # Next.js app
   web:
     image: node:18
+    container_name: app
     working_dir: /app
     volumes:
       - .:/app
@@ -19,6 +20,7 @@ services:
   # PostgreSQL database
   postgres:
     image: postgres:latest
+    container_name: database
     restart: always
     environment:
       POSTGRES_DB: database
@@ -29,6 +31,21 @@ services:
       - ./database:/var/backup
     ports:
       - "6433:5432"
+
+  # Ssl & routing app - caddy
+  caddy:
+    image: caddy:latest
+    container_name: caddy
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./Caddyfile:/etc/caddy/Caddyfile    # Mount your Caddyfile
+      - caddy_data:/data                    # SSL certificates, etc.
+      - caddy_config:/config
+    # networks:
+    #   - caddy_network
+    restart: unless-stopped
 
  # pgAdmin
   # pgadmin:
@@ -45,3 +62,5 @@ services:
 volumes:
   postgres-data:
     driver: local
+  caddy_data:
+  caddy_config:

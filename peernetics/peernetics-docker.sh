@@ -14,10 +14,31 @@ cp .env.template .env
 
 nano .env
 # Add this inside the .env file
-DATABASE_URL=postgresql://postgres:password@172.17.0.2:5432/database
+DATABASE_URL=postgresql://postgres:password@database:5432/database
+
+nano docker-compose.yml
+
+nano Caddyfile
 
 # run this to build the docker images
 docker-compose up -d
+
+
+
+
+
+
+
+
+
+
+
+
+# if needed
+
+
+
+
 
 
 # run this inside the web container 

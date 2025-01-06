@@ -22,7 +22,7 @@ EOT
 # Enable the virtual host and rewrite module, then restart Apache
 sudo a2dissite 000-default.conf
 sudo a2dissite default-ssl.conf
-sudo a2ensite mebany.conf
+# sudo a2ensite mebany.conf
 sudo a2enmod ssl
 
 # sudo a2ensite hidden-ssl.conf
