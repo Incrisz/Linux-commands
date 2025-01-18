@@ -30,6 +30,13 @@ RUN composer install --no-interaction --no-dev --prefer-dist
 RUN cp .env.example .env
 RUN php artisan key:generate
 
+RUN sed -i 's/^DB_HOST=.*/DB_HOST=database/' .env
+RUN sed -i 's/^DB_PORT=.*/DB_PORT=3306/' .env
+RUN sed -i 's/^DB_DATABASE=.*/DB_DATABASE=autofixer/' .env
+RUN sed -i 's/^DB_USERNAME=.*/DB_USERNAME=autofixer/' .env
+RUN sed -i 's/^DB_PASSWORD=.*/DB_PASSWORD=Autofixer@2022/' .env
+
+
 
 # Expose port 8000 for accessing the Laravel service
 EXPOSE 8000

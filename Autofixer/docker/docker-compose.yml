@@ -18,6 +18,9 @@ services:
       MYSQL_PASSWORD: Autofixer@2022
     ports:
       - "3306:3306"
+    volumes:
+      - ./db_data:/docker-entrypoint-initdb.d  # create db_data and add your .sql file it will automatically import it
+
   phpmyadmin:
     container_name: control
     depends_on: 
