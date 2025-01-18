@@ -1,3 +1,11 @@
 loyaltyclub.peernetics.io {
     reverse_proxy app:3000
 }
+
+loyaltyclubdev.peernetics.io {
+    reverse_proxy loyalty-club-dev_web_1:3000
+}
+
+www.loyaltyclubdev.peernetics.io {
+    reverse_proxy loyalty-club-dev_web_1:3000
+}

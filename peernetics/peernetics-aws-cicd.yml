@@ -1,0 +1,63 @@
+name: Deploy with SSH
+
+on:
+  push:
+    branches:
+      - main # Triggers the workflow on a push to the main branch.
+
+jobs:
+  deployment:
+    runs-on: ubuntu-latest # Specifies to run the job on the latest Ubuntu runner.
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4 # Checks out the repository code.
+    
+    - name: Deploy to Server
+      uses: appleboy/ssh-action@master # Executes SSH commands on your server
+      with:
+        host: ${{ secrets.ssh_server }} # Your server IP or hostname, stored as a secret.
+        username: ${{ secrets.ssh_username }} # SSH username, stored as a secret.
+        password: ${{ secrets.ssh_password }} # SSH password, stored as a secret.
+        port: 22 # Optional. Default SSH port 22 is used unless changed.
+        script: |
+          echo "Starting deployment process..."
+          if [ -d "/home/peernetics/public_html/.git" ]; then
+            cd /home/peernetics/public_html # Make sure this is the correct path.
+            git add .
+            git commit -m "update"
+            git fetch origin
+            git merge origin/main
+            git pull origin main # Pulling the latest changes from the main branch.
+            php artisan migrate
+            composer install
+            chmod -R 777 storage/ *
+          else
+            git clone https://github.com/Peernetics-Ltd/company-web.git /home/peernetics/public_html # Replace with your repository URL.
+            cd /home/peernetics/public_html
+            php artisan migrate
+            composer install
+          fi
+          # Create www-data user if it doesn't exist
+          if ! id -u www-data > /dev/null 2>&1; then
+            sudo useradd -r -s /usr/sbin/nologin www-data
+          fi
+          # Change ownership of the directory
+          sudo chown -R www-data:www-data /home/peernetics/public_html/
+          # Verify the ownership change
+          ls -ld /home/peernetics/public_html/
+
+
+
+
+
+
+
+
+
+
+
+
+
+# Add token at the .git/config file  => https://<github-token>@github.com/Cyfamod-Technologies/web3-project.git
+# Add /.github at the .gitignore file
+

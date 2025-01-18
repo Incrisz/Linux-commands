@@ -63,3 +63,9 @@ psql -U postgres -d database
 \c database
 
 \dt
+
+
+
+mysqldump -u root -p autofixer > autofixer_backup.sql
+
+scp root@140.82.13.150:/var/www/html/autofixer/autofixer_backup.sql /home/cloud/Desktop/autofixer_backup.sql
