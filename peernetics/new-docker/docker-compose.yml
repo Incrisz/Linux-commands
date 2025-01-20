@@ -1,0 +1,43 @@
+version: '3.8'
+
+services:
+
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: app
+    # restart: always
+    working_dir: /app
+    volumes:
+      - .:/app
+    ports:
+      - "1213:3000"
+    # environment:
+    #   - NODE_ENV=development
+    command: >
+      sh -c "npx prisma db push && PORT=3000 npm run dev"
+    depends_on:
+      - postgres  # Add any dependencies if needed, e.g., a database service
+
+
+
+    # PostgreSQL database
+  postgres:
+    image: postgres:latest
+    container_name: postgres-database
+    restart: always
+    environment:
+      POSTGRES_DB: database
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: password
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+      - ./database:/var/backup
+      - ./db_data:/docker-entrypoint-initdb.d  # create db_data and add your .sql file it will automatically import it
+    ports:
+      - "6433:5432"
+
+volumes:
+  postgres-data:
+    driver: local

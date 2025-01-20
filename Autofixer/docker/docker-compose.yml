@@ -5,12 +5,14 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
+      # restart: always
     ports:
       - "8000:8000"
   
   db:
     image: mysql:8.0
     container_name: database
+    restart: always
     environment:
       MYSQL_ROOT_PASSWORD: 1ncrease
       MYSQL_DATABASE: autofixer

@@ -1,10 +1,6 @@
 git clone https://github.com/mis-technologies/Autofixer-solution.git
 
-cd Autofixer-solution
-
-mkdir db_data
-
-cd ..
+mkdir Autofixer-solution/db_data
 
 cp autofixer_backup.sql Autofixer-solution/db_data/
 
