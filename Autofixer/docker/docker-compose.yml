@@ -34,4 +34,5 @@ services:
     environment:
       PMA_HOST: db
       MYSQL_ROOT_PASSWORD: 1ncrease
+      UPLOAD_LIMIT: 300M
 
